@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://c02xoucyqi5n3"]
+
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_pickup.gd" id="1_13p3v"]
+[ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/tsinelas.glb" id="1_b4r66"]
+
+[sub_resource type="Curve" id="Curve_s6qbn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lsejl"]
+curve = SubResource("Curve_s6qbn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bo4mi"]
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+angle_min = 720.0
+angle_max = 720.0
+velocity_pivot = Vector3(0, 5, 0)
+spread = 180.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 2, 0)
+tangential_accel_min = 5.0
+tangential_accel_max = 5.0
+damping_max = 3.0
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_lsejl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdjxu"]
+transparency = 1
+albedo_color = Color(1, 0, 1, 0.2)
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0, 1, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4aj0d"]
+material = SubResource("StandardMaterial3D_wdjxu")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sb1uk"]
+radius = 0.601683
+
+[node name="TsinelasPickup" type="Node3D"]
+script = ExtResource("1_13p3v")
+
+[node name="tsinelas" parent="." instance=ExtResource("1_b4r66")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_bo4mi")
+draw_pass_1 = SubResource("SphereMesh_4aj0d")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_sb1uk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

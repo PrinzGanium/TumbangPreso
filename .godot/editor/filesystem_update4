@@ -1,0 +1,12 @@
+res://default_env.tres
+res://MenuNavigation/Games/TumbangPreso/BaseBoard.tscn
+res://MenuNavigation/Games/TumbangPreso/can_imported.tscn
+res://MenuNavigation/Games/TumbangPreso/Thrower/thrower.tscn
+res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_projectile.tscn
+res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_projectile.gd
+res://MenuNavigation/Games/TumbangPreso/Thrower/TsinelasTHrow.gd
+res://MenuNavigation/Games/TumbangPreso/player.gd
+res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_pickup.tscn
+res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_pickup.gd
+res://MenuNavigation/Games/TumbangPreso/ThrowerCharacter.tscn
+res://MenuNavigation/Games/TumbangPreso/player_stats.gd

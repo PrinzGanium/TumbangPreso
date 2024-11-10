@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bslxx1lpmraua"]
+
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_projectile.gd" id="1_01n8i"]
+[ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/tsinelas.glb" id="1_edtsv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gjsfm"]
+custom_solver_bias = 1.0
+size = Vector3(0.395, 0.21, 1)
+
+[node name="TsinelasProjectile" type="RigidBody3D"]
+script = ExtResource("1_01n8i")
+
+[node name="tsinelas" parent="." instance=ExtResource("1_edtsv")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_gjsfm")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+
+[node name="GracePeriod" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Timeout" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="GracePeriod" to="." method="_on_grace_period_timeout"]
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]
+
+[editable path="tsinelas"]

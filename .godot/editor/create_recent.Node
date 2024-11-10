@@ -1,6 +1,12 @@
-Node3D
+Node
 CollisionShape3D
+Area3D
+GPUParticles3D
+CPUParticles3D
+Timer
+RayCast3D
 RigidBody3D
+Node3D
 MeshInstance3D
 CSGCylinder3D
 CSGBox3D

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1y2heenk7d8k"]
+
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/TsinelasTHrow.gd" id="1_6veql"]
+
+[node name="Thrower" type="Node3D"]
+script = ExtResource("1_6veql")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
