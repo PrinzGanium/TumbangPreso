@@ -1,0 +1,13 @@
+res://Assets/Player.tscn::9d583e31dd5957889d9bf6eef6047c58::1729481050::res://.godot/exported/133200997/export-b96f1b21320dedf4ea6b7c2f3f44644a-Player.scn
+res://Assets/Test.tscn::229c5fa14d5e0085fc1d83e09878a54e::1729481050::res://.godot/exported/133200997/export-aa241c6eaf98607eb23d2758fb834c87-Test.scn
+res://Curves/Exponential.tres::03e393d5c3c7bf66370fbec8e9c7cd2a::1729481050::res://.godot/exported/133200997/export-8cbc1494ddb5167d77028ffece5fc55b-Exponential.res
+res://Curves/Inverse_S.tres::6d2e585d75a624d8b06d9d3c3f52abde::1729481050::res://.godot/exported/133200997/export-fa57eb5b82716005ce339da345c90e99-Inverse_S.res
+res://Curves/Linear.tres::efb8e52618e4b74c5d786141fbdb9ca6::1729481050::res://.godot/exported/133200997/export-a42af92612c3986cd47c2c9293b1febe-Linear.res
+res://MenuNavigation/Credits/Credits.tscn::e9b4a6dc5613c3d918d50da41f995dcc::1729481050::res://.godot/exported/133200997/export-ae7770a3216b7229993caa8779486449-Credits.scn
+res://MenuNavigation/EndMenu/EndMenu.tscn::dbddb17153dfb8fe60fabcc916252f44::1729481050::res://.godot/exported/133200997/export-28f89e8020a4896f92b521df53d6a3d5-EndMenu.scn
+res://MenuNavigation/Games/TumbangPreso/BaseBoard.tscn::a4f7dcaccbcb7f08db52a6982d373786::1729660767::res://.godot/exported/133200997/export-17ff788a86926a569170c64bb094c1d6-BaseBoard.scn
+res://MenuNavigation/Games/TumbangPreso/can.tscn::401fe5c0eecfa5c5425ece3197767c8d::1729495368::res://.godot/exported/133200997/export-ffadf238eb68a8c5947201002c4c6bf8-can.scn
+res://MenuNavigation/Games/TumbangPreso/can_imported.tscn::a8131214ccb5c661594d821bec83f883::1729660767::res://.godot/exported/133200997/export-0a64455cb407718e994cca062c4442eb-can_imported.scn
+res://MenuNavigation/GameSelectScreen/GameSelect.tscn::b8c5a5c09cc845d3ba58fd160edf724a::1729481050::res://.godot/exported/133200997/export-6e8a49d31c893d51a57a7ed26ba7b97b-GameSelect.scn
+res://MenuNavigation/StartMenu/StartMenu.tscn::dafaac4de64baaec94e93a8d5c8fd4e0::1729481050::res://.godot/exported/133200997/export-32a873ac2b0df8259ee72012256ade56-StartMenu.scn
+res://default_env.tres::b2f98f3e9c3000ca033c3fdeb53e212f::1729660767::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res

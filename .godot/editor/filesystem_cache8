@@ -1,11 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1730274436
+::res://::1731215923
 attrib.md::TextFile::-1::1728638644::0::1::::<><>::
 binds.md::TextFile::-1::1728638644::0::1::::<><>::
 Crosshair.png::CompressedTexture2D::2074252623863322311::1728638644::1729481080::1::::<><>::
 default_env.tres::Environment::8385188329528615993::1729660767::0::1::::<><>::
 icon.png::CompressedTexture2D::2562659240947234210::1728637450::1729481080::1::::<><>::
-README.md::TextFile::-1::1728638644::0::1::::<><>::
+README.md::TextFile::-1::1731213941::0::1::::<><>::
 ::res://Assets/::1729227828
 Player.gd::GDScript::-1::1729481050::0::1::::<>CharacterBody3D<>::
 Player.tscn::PackedScene::-1::1729481050::0::1::::<><>::res://Assets/Player.gd<>res://Crosshair.png
@@ -22,7 +22,7 @@ Credits.tscn::PackedScene::-1::1729481050::0::1::::<><>::res://MenuNavigation/St
 EndMenu.tscn::PackedScene::-1::1729481050::0::1::::<><>::res://MenuNavigation/EndMenu/MenuScript_EndMenu.gd
 MenuScript_EndMenu.gd::GDScript::-1::1729481050::0::1::::<>Control<>::
 ::res://MenuNavigation/Games/::1729226396
-::res://MenuNavigation/Games/TumbangPreso/::1729660767
+::res://MenuNavigation/Games/TumbangPreso/::1730274438
 BaseBoard.tscn::PackedScene::6313829199745289832::1729660767::0::1::::<><>::res://MenuNavigation/Games/TumbangPreso/player.gd<>uid://d1gaa3qo7sp1s::::res://Textures/concrete.png<>uid://bue4vnmx5bg3m::::res://MenuNavigation/Games/TumbangPreso/tsinelas.glb<>uid://4uh1alnkr0kb::::res://MenuNavigation/Games/TumbangPreso/can.tscn<>uid://cxgg5vbn7vh4b::::res://MenuNavigation/Games/TumbangPreso/can.glb<>uid://cuftcvegfmf61::::res://MenuNavigation/Games/TumbangPreso/can_imported.tscn
 can.glb::PackedScene::6399990018528466431::1729500164::1729500470::1::::<><>::
 can.tscn::PackedScene::2077235487772597057::1729495368::0::1::::<><>::
@@ -37,5 +37,5 @@ MenuScript_Start.gd::GDScript::-1::1729481050::0::1::::<>Control<>::
 StartMenu.tscn::PackedScene::-1::1729481050::0::1::::<><>::res://MenuNavigation/StartMenu/MenuScript_Start.gd<>res://MenuNavigation/GameSelectScreen/GameSelect.tscn
 ::res://Textures/::1729494830
 concrete.png::CompressedTexture2D::8996559748242762898::1729494806::1729494830::1::::<><>::
-::res://TumbangPreso-Thesis-Project/::1728639708
+::res://TumbangPreso-Thesis-Project/::1731214019
 README.md::TextFile::-1::1728639708::0::1::::<><>::
