@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuftcvegfmf61"]
+
+[ext_resource type="PackedScene" uid="uid://cxgg5vbn7vh4b" path="res://MenuNavigation/Games/TumbangPreso/can.glb" id="1_uym26"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tbipf"]
+height = 0.530328
+radius = 0.191638
+
+[node name="Can" instance=ExtResource("1_uym26")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Cylinder_001" parent="." index="1"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("CylinderShape3D_tbipf")

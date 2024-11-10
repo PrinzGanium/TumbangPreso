@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MenuNavigation/GameSelectScreen/GameSelect.gd" type="Script" id=1]
+[ext_resource path="res://MenuNavigation/Games/TumbangPreso/BaseBoard.tscn" type="PackedScene" id=2]
+
+[node name="GameSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+TumbangPreso = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -7.0
+offset_bottom = 7.0
+text = "Anong lalaruin natin?"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 94.0
+offset_right = 55.0
+offset_bottom = 162.0
+
+[node name="Button" type="Button" parent="GridContainer"]
+offset_right = 110.0
+offset_bottom = 20.0
+text = "Tumbang Preso"
+
+[node name="Button2" type="Button" parent="GridContainer"]
+offset_top = 24.0
+offset_right = 110.0
+offset_bottom = 44.0
+
+[node name="Button3" type="Button" parent="GridContainer"]
+offset_top = 48.0
+offset_right = 110.0
+offset_bottom = 68.0
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_Button_pressed"]
