@@ -12,9 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("body")
 	if body.is_in_group("tapon"):
-		print("tapon!")
+		print("picked up!")
 		position = Vector3.DOWN * 10
 		body.gain_ammo()
 		

@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bslxx1lpmraua"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/tsinelas_projectile.gd" id="1_01n8i"]
-[ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/tsinelas.glb" id="1_edtsv"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_projectile.gd" id="1_01n8i"]
+[ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas.glb" id="1_edtsv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gjsfm"]
-custom_solver_bias = 1.0
-size = Vector3(0.395, 0.21, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vmfyq"]
+height = 0.203547
+radius = 0.436452
 
-[node name="TsinelasProjectile" type="RigidBody3D"]
+[node name="TsinelasProjectile" type="RigidBody3D" groups=["Tsinelas"]]
+collision_layer = 2
 script = ExtResource("1_01n8i")
 
 [node name="tsinelas" parent="." instance=ExtResource("1_edtsv")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_gjsfm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0298091, -0.0093689)
+shape = SubResource("CylinderShape3D_vmfyq")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -1)

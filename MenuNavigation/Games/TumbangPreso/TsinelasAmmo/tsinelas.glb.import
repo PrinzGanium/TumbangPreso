@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cxgg5vbn7vh4b"
-path="res://.godot/imported/can.glb-18b940df95144d2d0bf7106c1e0e0898.scn"
+uid="uid://bue4vnmx5bg3m"
+path="res://.godot/imported/tsinelas.glb-162c40409b14954e5315410edb6b8eb8.scn"
 
 [deps]
 
-source_file="res://MenuNavigation/Games/TumbangPreso/can.glb"
-dest_files=["res://.godot/imported/can.glb-18b940df95144d2d0bf7106c1e0e0898.scn"]
+source_file="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas.glb"
+dest_files=["res://.godot/imported/tsinelas.glb-162c40409b14954e5315410edb6b8eb8.scn"]
 
 [params]
 
-nodes/root_type="RigidBody3D"
-nodes/root_name="Can"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -33,10 +33,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Camera": {
+"PATH:BezierCircle": {
 "import/skip_import": true
 },
-"PATH:Light": {
+"PATH:BezierCurve_001": {
 "import/skip_import": true
 }
 }

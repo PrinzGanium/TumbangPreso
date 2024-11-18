@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+@export var active = false
 var speed = 0.0
 
 const SPRINT_SPEED = 10.0
@@ -31,10 +31,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("leftclick") and stats.ammo > 0:
-		$Head/Camera3D/Thrower.throw()
-		stats.ammo -= 1
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

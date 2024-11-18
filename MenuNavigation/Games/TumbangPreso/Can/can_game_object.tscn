@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://caeqf60dyu3xi"]
+
+[ext_resource type="PackedScene" uid="uid://cuftcvegfmf61" path="res://MenuNavigation/Games/TumbangPreso/Can/can_imported.tscn" id="1_cpt81"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.gd" id="1_ulw7h"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/can_shortscript.gd" id="3_fich5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i75hi"]
+height = 0.165221
+
+[node name="CanGameObject" type="Node3D"]
+script = ExtResource("1_ulw7h")
+
+[node name="Can" parent="." groups=["can"] instance=ExtResource("1_cpt81")]
+collision_layer = 19
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("3_fich5")
+
+[node name="Area3D" type="Area3D" parent="Can"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Can/Area3D"]
+shape = SubResource("CylinderShape3D_i75hi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Can"]
+
+[connection signal="body_entered" from="Can" to="." method="_on_can_body_entered"]
+[connection signal="area_entered" from="Can/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Can/Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Can/Area3D" to="." method="_on_area_3d_body_entered"]
