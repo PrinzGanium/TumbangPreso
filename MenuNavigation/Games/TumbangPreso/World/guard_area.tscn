@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcw44fxmlha6c"]
+
+[ext_resource type="Texture2D" uid="uid://d1gaa3qo7sp1s" path="res://Textures/concrete.png" id="1_6by33"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/World/guard_area.gd" id="2_12eqn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qre1t"]
+albedo_color = Color(0.657452, 0.706852, 0.602559, 1)
+albedo_texture = ExtResource("1_6by33")
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fg0vc"]
+size = Vector3(1, 18, 2)
+
+[node name="GuardArea" type="CSGBox3D" groups=["ground"]]
+transform = Transform3D(21.9, 0, 0, 0, 1, 0, 0, 0, 21.9, -0.143253, -0.137861, 0.0264972)
+material_override = SubResource("StandardMaterial3D_qre1t")
+use_collision = true
+size = Vector3(1, 0.517479, 2)
+script = ExtResource("2_12eqn")
+
+[node name="PlayerDetection" type="Area3D" parent="."]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 0)
+shape = SubResource("BoxShape3D_fg0vc")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

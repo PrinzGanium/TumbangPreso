@@ -17,6 +17,10 @@ var t_bob = 0.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+
+
+
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var stats = $PlayerStats
@@ -38,12 +42,12 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 
 	speed = WALK_SPEED
-	if Input.is_action_pressed("sprint") and is_on_floor():
-		speed = SPRINT_SPEED
+	#if Input.is_action_pressed("sprint") and is_on_floor():
+		#speed = SPRINT_SPEED
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -78,3 +82,8 @@ func _headbob(time):
 
 func gain_ammo():
 	stats.ammo += 1
+
+func interact(body):
+	if body:
+		if stats.canTag:
+			get_tree().quit()

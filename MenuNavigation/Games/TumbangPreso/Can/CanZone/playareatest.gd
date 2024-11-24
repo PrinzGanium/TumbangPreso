@@ -14,12 +14,14 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 func _process(delta: float) -> void:
 	$Can.visible = active
-	
-	if Input.is_action_just_pressed("leftclick"):
-		reset()
+	#
+	#if Input.is_action_just_pressed("leftclick"):
+		#reset()
 
 func reset():
 	instance = can_object.instantiate()
-	instance.global_position = $SpawnPoint.global_position
+	
+	instance.transform.basis = $SpawnPoint.transform.basis
 	add_child(instance)
+	instance.global_position = $SpawnPoint.global_position
 	

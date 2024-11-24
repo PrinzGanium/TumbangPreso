@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cv7p3ygtm3smi"]
+[gd_scene load_steps=16 format=3 uid="uid://cv7p3ygtm3smi"]
 
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/camera_switcher.gd" id="1_vjr80"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/World/guard_signaler.gd" id="2_pdl1m"]
 [ext_resource type="Texture2D" uid="uid://d1gaa3qo7sp1s" path="res://Textures/concrete.png" id="2_s5i46"]
 [ext_resource type="PackedScene" uid="uid://bslxx1lpmraua" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_projectile.tscn" id="3_5mgii"]
 [ext_resource type="PackedScene" uid="uid://33ioiqywyxyd" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerCharacter.tscn" id="4_iqquw"]
 [ext_resource type="PackedScene" uid="uid://cdwynh7cks5xx" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardCharacter.tscn" id="5_v56h5"]
+[ext_resource type="PackedScene" uid="uid://bcw44fxmlha6c" path="res://MenuNavigation/Games/TumbangPreso/World/guard_area.tscn" id="6_5p2y3"]
 [ext_resource type="PackedScene" uid="uid://g308yg7b2wq2" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/CanZone.tscn" id="6_5ui0b"]
 [ext_resource type="PackedScene" uid="uid://caeqf60dyu3xi" path="res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.tscn" id="7_4gmk2"]
+[ext_resource type="PackedScene" uid="uid://cfaq6c14a5j5d" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/ui.tscn" id="8_ihc1w"]
+[ext_resource type="PackedScene" uid="uid://wlrskqhtd3su" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/GuardCharacterAuto.tscn" id="10_cvx62"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gq0md"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,8 +20,12 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_gq0md")
 
 [sub_resource type="Environment" id="Environment_ayhgt"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.47034, 0.640011, 1, 1)
 sky = SubResource("Sky_pe28h")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
 tonemap_mode = 2
 glow_enabled = true
 
@@ -26,15 +34,15 @@ albedo_color = Color(0.657452, 0.706852, 0.602559, 1)
 albedo_texture = ExtResource("2_s5i46")
 texture_filter = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p45vl"]
-albedo_color = Color(1, 0.417836, 0.428579, 1)
-
 [node name="World" type="Node3D"]
 
 [node name="CameraSwitcher" type="Node" parent="." node_paths=PackedStringArray("player", "guard")]
 script = ExtResource("1_vjr80")
 player = NodePath("../Player")
 guard = NodePath("../Guard")
+
+[node name="GuardSignal" type="Node" parent="."]
+script = ExtResource("2_pdl1m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ayhgt")
@@ -44,12 +52,6 @@ transform = Transform3D(-0.993961, -0.0972469, 0.0508395, 0, 0.463296, 0.886204,
 light_color = Color(1, 1, 0.933333, 1)
 light_energy = 1.3
 shadow_enabled = true
-
-[node name="BasePanel" type="CSGBox3D" parent="." groups=["ground"]]
-transform = Transform3D(21.9, 0, 0, 0, 1, 0, 0, 0, 21.9, -0.143253, -0.137861, 0.0264972)
-material_override = SubResource("StandardMaterial3D_qre1t")
-use_collision = true
-size = Vector3(1, 0.517479, 2)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["ground"]]
 transform = Transform3D(21.9, 0, 0, 0, 1, 0, 0, 0, 21.9, -0.143253, -0.684084, 0.0264972)
@@ -91,16 +93,18 @@ active = true
 [node name="Guard" parent="." instance=ExtResource("5_v56h5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64142, 3.237)
 
+[node name="Guard2" parent="." instance=ExtResource("10_cvx62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66259, 3.74355, 0)
+
 [node name="WorldSetting" type="Node3D" parent="."]
 
-[node name="PlayArea" parent="WorldSetting" instance=ExtResource("6_5ui0b")]
+[node name="GuardArea" parent="WorldSetting" instance=ExtResource("6_5p2y3")]
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="WorldSetting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47177, 1.52056, 1.76596)
-material_override = SubResource("StandardMaterial3D_p45vl")
-use_collision = true
+[node name="PlayArea" parent="WorldSetting" instance=ExtResource("6_5ui0b")]
 
 [node name="Cans" type="Node3D" parent="."]
 
 [node name="CanGameObject" parent="Cans" instance=ExtResource("7_4gmk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55807, -1.58388)
+
+[node name="UI" parent="." instance=ExtResource("8_ihc1w")]
