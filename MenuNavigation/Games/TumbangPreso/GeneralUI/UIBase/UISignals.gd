@@ -3,15 +3,17 @@ extends CanvasLayer
 @export var time = 30
 
 # Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
 	$Time.start(time)
+	GuardSignal.playerCaught.connect(LoseGame)
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func LoseGame() -> void:
+	$WinLose.text = "Ikaw ay natalo!"
+	$WinLose.show()
 	pass
-
 
 func _on_game_timer_timeout() -> void:
 	get_tree().quit()

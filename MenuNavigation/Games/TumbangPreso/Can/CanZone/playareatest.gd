@@ -1,27 +1,19 @@
-extends CSGBox3D
+extends CSGCylinder3D
 
 var active = false
-
-var can_object = load("res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.tscn")
-var instance
-# should activate in
+@onready var can = $CanGameObject
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("can"):
-		print("he ran!")
+		GuardSignal.emit_signal("guardCommand", GuardSM.States.RETREIVE)
 		active = true
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
-	$Can.visible = active
-	#
-	#if Input.is_action_just_pressed("leftclick"):
-		#reset()
+func _process(_delta: float) -> void:
+	$HoloCan.visible = active
 
 func reset():
-	instance = can_object.instantiate()
-	
-	instance.transform.basis = $SpawnPoint.transform.basis
-	add_child(instance)
-	instance.global_position = $SpawnPoint.global_position
-	
+	print("RESET?")
+	active = false
+	can.reset()
+	pass

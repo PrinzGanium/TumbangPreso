@@ -2,15 +2,12 @@ extends RigidBody3D
 
 
 func interact(picker) -> bool:
-	print("pickmeupppp")
 	if owner.available:
 		print("available")
-		hide()
-		
+		sleeping = true
+		global_position = Vector3(0, -10, 0)
 		picker.stats.hasCan = true
 		return true
 	print("not available")
 	return false
 	
-func reset():
-	print("nothing yet")

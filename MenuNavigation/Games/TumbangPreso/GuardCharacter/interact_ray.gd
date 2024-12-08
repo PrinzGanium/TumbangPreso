@@ -1,5 +1,10 @@
 extends RayCast3D
 
+signal can
+signal home
+signal playerCaught
+
+@onready var SM = $"../../../GuardStateMachine"
 @onready var stats = $"../../../PlayerStats"
 @onready var prompt = $Prompt
 
@@ -9,11 +14,15 @@ func _process(_delta: float) -> void:
 	if is_colliding():
 		var collider = get_collider()
 		prompt.text  = "detecting " + collider.name
-	
-		if collider.is_in_group("can") or collider.is_in_group("playarea"):
-			if Input.is_action_just_pressed("leftclick"):
-				collider.interact(self)
+		
+		
+		if collider.is_in_group("can") and SM.currentstate == GuardSM.States.RETREIVE:
+			collider.interact(self)
+			emit_signal("can")
+		
+		if collider.is_in_group("playarea") and SM.currentstate == GuardSM.States.RETURN:
+			collider.interact(self)
+			emit_signal("home")
 		
 		if collider.is_in_group("tapon"):
-			if Input.is_action_just_pressed("leftclick"):
-				collider.interact(self)
+			GuardSignal.emit_signal("playerCaught")

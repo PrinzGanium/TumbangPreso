@@ -15,6 +15,10 @@ run/main_scene="res://MenuNavigation/Games/TumbangPreso/World/BaseBoard.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
+[autoload]
+
+GuardSignal="*res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_signal.tscn"
+
 [display]
 
 window/size/mode=3

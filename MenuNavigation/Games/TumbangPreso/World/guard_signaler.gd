@@ -1,4 +1,6 @@
 extends Node
 
+signal guardCommand(command)
+signal mapReady
 
-signal chasePlayer
+signal playerCaught

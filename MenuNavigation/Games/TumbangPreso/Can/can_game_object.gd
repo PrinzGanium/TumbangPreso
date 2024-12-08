@@ -2,6 +2,16 @@ extends Node3D
 
 var available = false
 
+@onready var can = $Can
+
+func reset():
+	can.sleeping = true
+	can.global_rotation = Vector3.ZERO
+	can.position = Vector3(0,0,0)
+	can.sleeping = false
+	show()
+	pass
+
 
 func _on_can_body_entered(body: Node) -> void:
 	if body.is_in_group("Tsinelas"):

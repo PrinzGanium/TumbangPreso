@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://g308yg7b2wq2"]
+[gd_scene load_steps=18 format=4 uid="uid://g308yg7b2wq2"]
 
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/playareatest.gd" id="1_1fcf8"]
+[ext_resource type="PackedScene" uid="uid://caeqf60dyu3xi" path="res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.tscn" id="2_8g84d"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/PlayAreaDetector.gd" id="2_dl2gt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5oall"]
-radius = 2.1
+radius = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8h3g"]
 resource_name = "Material.001"
@@ -96,7 +97,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Can:rotation:y")
+tracks/0/path = NodePath("HoloCan:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,7 +112,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Can:rotation:y")
+tracks/0/path = NodePath("HoloCan:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -137,37 +138,43 @@ states/spinning_can/node = SubResource("AnimationNodeAnimation_yilns")
 states/spinning_can/position = Vector2(356, 62)
 transitions = ["Start", "spinning_can", SubResource("AnimationNodeStateMachineTransition_eh3ow")]
 
-[node name="PlayArea" type="CSGBox3D" groups=["playarea"]]
+[node name="PlayArea" type="CSGCylinder3D" groups=["playarea"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.339019, 0)
 use_collision = true
-size = Vector3(4, 1, 4)
+radius = 1.5
+height = 0.8
+sides = 32
 script = ExtResource("1_1fcf8")
 
-[node name="Area3D" type="Area3D" parent="." groups=["playarea"]]
-collision_layer = 19
+[node name="CanGameObject" parent="." instance=ExtResource("2_8g84d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ReturnZone" type="Area3D" parent="." groups=["playarea"]]
+collision_layer = 16
 collision_mask = 16
 script = ExtResource("2_dl2gt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ReturnZone"]
 shape = SubResource("CylinderShape3D_5oall")
 
-[node name="Can" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.965926, -0.258819, -2.97886e-09, 0.258819, 0.965926, -2.04965e-15, 2.87736e-09, -7.70984e-10, 1, 0, 1.33033, 0)
+[node name="HoloCan" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.965926, -0.258819, -2.97886e-09, 0.258819, 0.965926, 1.98469e-08, -2.25939e-09, -1.99416e-08, 1, 0, 1.33033, 0)
+visible = false
 disable_mode = 1
 collision_layer = 0
 collision_mask = 0
 
-[node name="Cylinder" type="MeshInstance3D" parent="Can"]
+[node name="Cylinder" type="MeshInstance3D" parent="HoloCan"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("ArrayMesh_22jeq")
 skeleton = NodePath("")
 
-[node name="Cylinder_001" type="MeshInstance3D" parent="Can"]
+[node name="Cylinder_001" type="MeshInstance3D" parent="HoloCan"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("ArrayMesh_hblbu")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Can"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HoloCan"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("CylinderShape3D_tbipf")
 
@@ -183,4 +190,4 @@ anim_player = NodePath("../AutoSpin")
 [node name="SpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52291, 0)
 
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_exited" from="ReturnZone" to="." method="_on_area_3d_body_exited"]
