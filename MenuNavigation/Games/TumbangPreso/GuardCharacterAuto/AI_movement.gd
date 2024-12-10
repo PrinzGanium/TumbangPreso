@@ -11,7 +11,7 @@ class_name Guard
 var idlePosition
 
 var SPEED = 5
-
+var tStart = 0
 	
 func update_target_loc(loc):
 	NavAgent.target_position = (loc)
@@ -22,20 +22,28 @@ func _physics_process(_delta: float) -> void:
 	var target_pos
 	match SM.currentstate:
 		SM.States.IDLE:
-			SPEED = 3
-			idlePosition = (Player.global_position - self.global_position)/2 * randf()
+			SPEED = 4
+			idlePosition = (Player.global_position - Vector3.ZERO) * 2/5
 			target_pos = idlePosition
 			look_pos = Player.global_position
 		SM.States.CHASE:
-			SPEED = 8
+			SPEED = 8 + randf()*2
 			target_pos = Player.global_position
 			look_pos = target_pos
 		SM.States.RETURN:
+			SPEED = 10
 			target_pos = Vector3(0,0,0)
 			look_pos = target_pos
 		SM.States.RETREIVE:
+			SPEED = 10
 			target_pos = Can.global_position
 			look_pos = target_pos
+		SM.States.DONE:
+			SPEED = 4
+			idlePosition = (Player.global_position - Vector3.ZERO) * 2/5
+			target_pos = idlePosition
+			look_pos = Player.global_position
+			GuardSignal.emit_signal("guardCommand", GuardSM.States.IDLE)
 		_:
 			pass
 	update_target_loc(target_pos)

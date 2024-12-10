@@ -6,6 +6,7 @@
 [node name="UI" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_eaxa4")
+time = 180
 
 [node name="Time" type="Control" parent="."]
 layout_mode = 3
@@ -36,6 +37,15 @@ wait_time = 180.0
 one_shot = true
 autostart = true
 
+[node name="Points" type="Label" parent="."]
+offset_left = 29.0
+offset_top = 16.0
+offset_right = 110.0
+offset_bottom = 210.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 142
+text = "0"
+
 [node name="WinLose" type="Label" parent="."]
 visible = false
 anchors_preset = 8
@@ -53,5 +63,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "IKAW AY NAHULI!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Time/GameTimer" to="." method="_on_game_timer_timeout"]

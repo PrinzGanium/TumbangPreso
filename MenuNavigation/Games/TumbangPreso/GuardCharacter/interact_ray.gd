@@ -25,4 +25,5 @@ func _process(_delta: float) -> void:
 			emit_signal("home")
 		
 		if collider.is_in_group("tapon"):
+			print("caught")
 			GuardSignal.emit_signal("playerCaught")

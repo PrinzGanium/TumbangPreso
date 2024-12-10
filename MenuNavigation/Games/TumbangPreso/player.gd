@@ -77,7 +77,7 @@ func _headbob(time):
 	return pos
 
 func gain_ammo():
-	stats.ammo += 1
+	$Actions.add_ammo()
 
 func interact(body):
 	if body:

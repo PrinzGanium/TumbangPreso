@@ -1,5 +1,8 @@
-CSGCylinder3D
 Label
+MeshInstance3D
+ProgressBar
+Timer
+CSGCylinder3D
 NavigationAgent3D
 NavigationRegion3D
 Node3D
@@ -8,8 +11,4 @@ Label3D
 CollisionShape3D
 Area3D
 CanvasLayer
-Timer
 AnimationTree
-CharacterBody3D
-AnimationPlayer
-StaticBody3D

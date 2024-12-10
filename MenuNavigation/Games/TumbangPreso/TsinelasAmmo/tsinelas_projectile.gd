@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 var throw_dir : Vector3 = Vector3.FORWARD
-var throw_strength = 2000
+var throw_strength = 8000
 var grace = false
 
 var pickup  : Resource = load("res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_pickup.tscn")
@@ -9,6 +9,7 @@ var instance
 
 func _ready() -> void:
 	apply_central_force(throw_dir * throw_strength)
+	apply_torque((Vector3.MODEL_LEFT).normalized()*throw_strength/50)
 	pass # Replace with function body.
 
 
