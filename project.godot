@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GuardSignal="*res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_signal.tscn"
+Settings="*res://MenuNavigation/Settings/Settings.gd"
 
 [display]
 
@@ -115,6 +116,11 @@ c={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [physics]
 

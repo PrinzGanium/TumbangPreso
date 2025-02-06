@@ -2,10 +2,17 @@ extends CanvasLayer
 
 @export var time = 30
 var points = 0
+
+@onready var VJ = $"Virtual Joystick" 
 # Called when the node enters the scene tree for the first time.
 
 
 func _ready() -> void:
+	if Settings.mode == Settings.modes.MOBILE:
+		VJ.show()
+	else:
+		VJ.hide()
+	
 	$Time.start(time)
 	GuardSignal.playerCaught.connect(LoseGame)
 	GuardSignal.canHit.connect(updatePoints)
