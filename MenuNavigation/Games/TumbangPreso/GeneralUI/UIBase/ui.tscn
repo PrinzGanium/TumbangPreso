@@ -1,8 +1,118 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfaq6c14a5j5d"]
+[gd_scene load_steps=11 format=3 uid="uid://cfaq6c14a5j5d"]
 
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/UISignals.gd" id="1_eaxa4"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/UItime.gd" id="2_tfjcb"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_l712l"]
+[ext_resource type="FontFile" uid="uid://cpcl0n6ydgeku" path="res://Assets/Font/animeace.ttf" id="4_g1h01"]
+[ext_resource type="Texture2D" uid="uid://k1fh4cxmo61d" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/Announcer/Tagabato.png" id="5_7amvo"]
+[ext_resource type="FontFile" uid="uid://cfxt824m7bscq" path="res://Assets/Font/animeace_b.ttf" id="6_610fj"]
+
+[sub_resource type="Animation" id="Animation_ucno4"]
+resource_name = "Announcer"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Announcer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Announcer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startTimer"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_605ej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Announcer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Announcer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5smux"]
+resource_name = "Transfer"
+length = 0.5
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swapScene"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Announcer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia506"]
+_data = {
+"Announcer": SubResource("Animation_ucno4"),
+"RESET": SubResource("Animation_605ej"),
+"Transfer": SubResource("Animation_5smux")
+}
 
 [node name="UI" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -67,14 +177,124 @@ text = "IKAW AY NAHULI!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Virtual Joystick" parent="." instance=ExtResource("3_l712l")]
+[node name="Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Move" parent="Controls" instance=ExtResource("3_l712l")]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+offset_left = 16.0
+offset_top = -266.0
+offset_right = 266.0
+offset_bottom = -16.0
+
+[node name="Look" parent="Controls" instance=ExtResource("3_l712l")]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -300.0
-offset_top = -300.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -266.0
+offset_top = -266.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 0
+
+[node name="Announcer" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="You are" type="Label" parent="Announcer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.5
+offset_top = -267.0
+offset_right = 111.5
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_g1h01")
+theme_override_font_sizes/font_size = 32
+text = "Ikaw ang"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Announcer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -259.0
+offset_right = 204.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.134678
+texture = ExtResource("5_7amvo")
+
+[node name="Tagabato" type="Label" parent="Announcer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -253.0
+offset_top = 149.0
+offset_right = 268.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_610fj")
+theme_override_font_sizes/font_size = 64
+text = "Tagabato!"
+
+[node name="Label" type="Label" parent="Announcer/Tagabato"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 83.0
+offset_right = 419.0
+offset_bottom = 106.0
+text = "patumbahin ang lata at huwag kang mahuli!"
+
+[node name="Label2" type="Label" parent="Announcer"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_610fj")
+theme_override_font_sizes/font_size = 64
+text = "Taya!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ia506")
+}
 
 [connection signal="timeout" from="Time/GameTimer" to="." method="_on_game_timer_timeout"]

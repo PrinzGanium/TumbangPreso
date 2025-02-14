@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7fdmoomavdsm"]
+
+[ext_resource type="PackedScene" uid="uid://cfaq6c14a5j5d" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/ui.tscn" id="1_uyxbq"]
+[ext_resource type="PackedScene" uid="uid://cdwynh7cks5xx" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardCharacter.tscn" id="2_yg8bx"]
+[ext_resource type="Texture2D" uid="uid://c0hyaooh3xx5k" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/Announcer/Bantay.png" id="3_h0ggv"]
+[ext_resource type="PackedScene" uid="uid://bhr8vgahay14c" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/ThrowerCharacterAuto.tscn" id="4_0v1v3"]
+[ext_resource type="PackedScene" uid="uid://bp70bguxubw6a" path="res://MenuNavigation/Games/TumbangPreso/World/game_setting.tscn" id="4_e33uk"]
+[ext_resource type="PackedScene" uid="uid://crdbr0yms4kos" path="res://MenuNavigation/Games/TumbangPreso/World/decor.tscn" id="5_ogyrf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aeqmb"]
+
+[sub_resource type="Sky" id="Sky_m8j4e"]
+sky_material = SubResource("ProceduralSkyMaterial_aeqmb")
+
+[sub_resource type="Environment" id="Environment_ayhgt"]
+background_mode = 2
+background_color = Color(0.663787, 0.684901, 0.0539315, 1)
+sky = SubResource("Sky_m8j4e")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 0.803922, 1)
+reflected_light_source = 2
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(1, 0.741176, 0.635294, 1)
+volumetric_fog_emission_energy = 0.5
+volumetric_fog_anisotropy = -0.1
+volumetric_fog_length = 10.0
+volumetric_fog_sky_affect = 0.68
+
+[sub_resource type="FogMaterial" id="FogMaterial_dg5w4"]
+density = -6.6564
+height_falloff = 1.03526e-05
+edge_fade = 37.4806
+
+[node name="World" type="Node3D"]
+
+[node name="UI" parent="." instance=ExtResource("1_uyxbq")]
+time = 120
+otherScene = "res://MenuNavigation/Games/TumbangPreso/World/GameTP-Thrower.tscn"
+
+[node name="TextureRect" parent="UI/Announcer" index="1"]
+texture = ExtResource("3_h0ggv")
+
+[node name="Tagabato" parent="UI/Announcer" index="2"]
+text = "Taya!"
+horizontal_alignment = 1
+
+[node name="Label" parent="UI/Announcer/Tagabato" index="0"]
+text = "Ingatan ang lata at hulihin ang mga nambabato!"
+horizontal_alignment = 1
+
+[node name="Guard" parent="." instance=ExtResource("2_yg8bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46175, 3.74355, 0)
+
+[node name="Bato" parent="." instance=ExtResource("4_0v1v3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6316)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ayhgt")
+
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment"]
+size = Vector3(50, 50, 75)
+shape = 0
+material = SubResource("FogMaterial_dg5w4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.993961, -0.0972467, 0.0508393, 0, 0.463296, 0.886204, -0.109734, 0.880852, -0.460498, 0, 0, 0)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 1.3
+shadow_enabled = true
+
+[node name="GameSetting" parent="." instance=ExtResource("4_e33uk")]
+
+[node name="Decor" parent="." instance=ExtResource("5_ogyrf")]
+
+[editable path="UI"]

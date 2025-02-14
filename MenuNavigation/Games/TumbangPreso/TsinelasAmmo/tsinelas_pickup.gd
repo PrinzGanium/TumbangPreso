@@ -1,6 +1,9 @@
 extends Node3D
 
 
+func clean_up() -> void:
+	call_deferred("queue_free")
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("tapon"):
 		print("picked up!")

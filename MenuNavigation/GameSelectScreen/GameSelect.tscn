@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dumwyj2c1mmyx"]
 
 [ext_resource type="Script" path="res://MenuNavigation/GameSelectScreen/GameSelect.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://cv7p3ygtm3smi" path="res://MenuNavigation/Games/TumbangPreso/World/BaseBoard.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bgmmgsmoos47i" path="res://MenuNavigation/TumbangPresoInstructionsCutscene/TPInstCutscene.tscn" id="2_8qifs"]
 [ext_resource type="Texture2D" uid="uid://vobwaqq48dut" path="res://MenuNavigation/StartMenu/lolabg.png" id="3_p524u"]
 [ext_resource type="Texture2D" uid="uid://bfyn17mca8ild" path="res://MenuNavigation/GameSelectScreen/Papers.png" id="4_u1woj"]
 [ext_resource type="Texture2D" uid="uid://wu8mwwn43mx4" path="res://MenuNavigation/GameSelectScreen/Papers2.png" id="5_xfjyc"]
@@ -37,8 +37,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1")
-TumbangPreso = ExtResource("2")
+TumbangPreso = ExtResource("2_8qifs")
 
 [node name="BG" type="TextureRect" parent="."]
 self_modulate = Color(0.56, 0.56, 0.56, 1)
@@ -250,6 +252,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="ExplainerTumba" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -259,6 +262,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Lola" type="TextureRect" parent="ExplainerTumba"]
+visible = false
 layout_mode = 0
 offset_left = 316.0
 offset_top = -30.0
@@ -268,6 +272,7 @@ texture = ExtResource("9_kpm0p")
 stretch_mode = 4
 
 [node name="Slideshow" type="Control" parent="ExplainerTumba"]
+visible = false
 anchors_preset = 0
 offset_right = 650.0
 offset_bottom = 648.0

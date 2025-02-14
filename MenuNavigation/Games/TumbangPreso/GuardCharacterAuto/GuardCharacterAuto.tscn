@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_state_machine.gd" id="2_yoaiw"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/Guard_Stats.gd" id="3_e7je0"]
 [ext_resource type="Texture2D" uid="uid://c5otxrs0j2x8r" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/Angery.png" id="4_cw7ua"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/interact_ray.gd" id="4_uh2vf"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="5_c8omn"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/GuardAutointeract_ray.gd" id="5_ok228"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0m0o8"]
 
@@ -71,7 +71,7 @@ target_position = Vector3(0, 0, -2)
 collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
-script = ExtResource("4_uh2vf")
+script = ExtResource("5_ok228")
 
 [node name="Prompt" type="Label" parent="Head/Camera3D/InteractRay"]
 anchors_preset = 14

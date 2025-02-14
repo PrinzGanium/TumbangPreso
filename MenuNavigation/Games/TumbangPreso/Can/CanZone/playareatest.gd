@@ -5,6 +5,7 @@ var active = false
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("can"):
+		GuardSignal.emit_signal("guardCommand", GuardSM.States.RETREIVE)
 		active = true
 	pass # Replace with function body.
 

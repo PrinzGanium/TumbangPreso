@@ -4,6 +4,8 @@ signal can
 signal home
 signal playerCaught
 
+
+@export var auto = false
 @onready var SM = $"../../../GuardStateMachine"
 @onready var stats = $"../../../PlayerStats"
 @onready var prompt = $Prompt
@@ -11,16 +13,16 @@ signal playerCaught
 func _process(_delta: float) -> void:
 	prompt.text = ""
 	
-	if is_colliding():
+	if is_colliding() and Input.is_action_just_pressed("leftclick"):
 		var collider = get_collider()
 		prompt.text  = "detecting " + collider.name
 		
 		
-		if collider.is_in_group("can") and SM.currentstate == GuardSM.States.RETREIVE:
+		if collider.is_in_group("can"):
 			collider.interact(self)
 			emit_signal("can")
 		
-		if collider.is_in_group("playarea") and SM.currentstate == GuardSM.States.RETURN:
+		if collider.is_in_group("playarea"):
 			collider.interact(self)
 			emit_signal("home")
 		

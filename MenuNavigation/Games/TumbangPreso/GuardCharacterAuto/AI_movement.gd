@@ -51,6 +51,6 @@ func _physics_process(_delta: float) -> void:
 	var next_location = NavAgent.get_next_path_position()
 	
 	head.look_at(look_pos)
-	var new_velocity : Vector3 = (next_location - current_location).normalized() * SPEED
+	var new_velocity : Vector3 = (next_location - current_location).normalized() * SPEED/2
 	velocity = new_velocity
 	move_and_slide()

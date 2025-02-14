@@ -1,8 +1,10 @@
-res://MenuNavigation/StartCutscene
-res://MenuNavigation/Settings
-res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto
 res://MenuNavigation/Games/TumbangPreso/World
 res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase
+res://MenuNavigation/Games/TumbangPreso/GuardCharacter
+res://MenuNavigation/Games/TumbangPreso/GeneralUI/Announcer
+res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto
+res://MenuNavigation/StartCutscene
+res://MenuNavigation/Settings
 res://MenuNavigation/Games/TumbangPreso/Can/CanZone
 res://MenuNavigation/Games/TumbangPreso
 res://MenuNavigation/Games/TumbangPreso/Thrower

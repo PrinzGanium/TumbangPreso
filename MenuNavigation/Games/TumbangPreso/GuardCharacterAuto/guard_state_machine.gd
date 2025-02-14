@@ -66,3 +66,6 @@ func _on_interact_ray_home() -> void:
 func set_aware(y):
 	aware = y
 	pass
+
+func deactivate():
+	pass

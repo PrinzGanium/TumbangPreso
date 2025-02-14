@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TumbangPreso"
-run/main_scene="res://MenuNavigation/Games/TumbangPreso/World/BaseBoard.tscn"
+run/main_scene="res://MenuNavigation/Games/TumbangPreso/World/GameTP-Thrower.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
