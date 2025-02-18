@@ -30,7 +30,9 @@ script = ExtResource("1_71i5n")
 script = ExtResource("1_64abk")
 
 [node name="Timer" type="Timer" parent="Actions"]
+wait_time = 3.0
 one_shot = true
+autostart = true
 
 [node name="PlayerStats" type="Node" parent="."]
 script = ExtResource("3_8wqgw")
@@ -52,6 +54,8 @@ shape = SubResource("ConvexPolygonShape3D_3fton")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="StateLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35736, 0)
+text = "State"
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -150,6 +154,8 @@ transform = Transform3D(0.524223, 0, 0, 0, 0.539793, 0, 0, 0, 1, 0, 0, -0.6849)
 material_override = SubResource("StandardMaterial3D_lmyyj")
 mesh = SubResource("QuadMesh_oyxvi")
 
+[connection signal="timeout" from="Actions/Timer" to="Actions" method="_on_timer_timeout"]
+[connection signal="ammochange" from="PlayerStats" to="ThrowerStateMachine" method="_on_player_stats_ammochange"]
 [connection signal="timeout" from="ThrowerStateMachine/StateTimer" to="ThrowerStateMachine" method="_on_state_timer_timeout"]
 
 [editable path="Head/Camera3D/Thrower"]

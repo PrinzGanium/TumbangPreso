@@ -9,6 +9,11 @@ signal playerCaught
 @onready var stats = $"../../../PlayerStats"
 @onready var prompt = $Prompt
 
+func ignore():
+	can.emit()
+	home.emit()
+	playerCaught.emit()
+
 func _process(_delta: float) -> void:
 	prompt.text = ""
 	

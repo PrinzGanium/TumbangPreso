@@ -1,6 +1,12 @@
 extends Node
 
-@export var ammo = 3
+signal ammochange
+@export var ammo = 3:
+	set(val):
+		ammo = val
+		ammochange.emit()
+	get:
+		return ammo
 @onready var ammotext = $"../Head/Camera3D/Thrower/HUD/TsinelasLabel"
 
 @export var canTag = false
@@ -8,6 +14,7 @@ extends Node
 
 func _process(_delta: float) -> void:
 	ammotext.text = "Tsinelas:" + str(ammo)
+
 
 
 func tag():

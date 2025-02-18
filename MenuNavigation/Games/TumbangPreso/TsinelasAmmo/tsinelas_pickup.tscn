@@ -49,7 +49,7 @@ radius = 0.601683
 [node name="TsinelasPickup" type="Node3D" groups=["cleanup"]]
 script = ExtResource("1_13p3v")
 
-[node name="tsinelas" parent="." instance=ExtResource("1_b4r66")]
+[node name="tsinelas" parent="." groups=["pickup"] instance=ExtResource("1_b4r66")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

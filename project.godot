@@ -42,6 +42,7 @@ guard="guard character"
 ground="ground detection"
 playarea="can play area"
 can="can!"
+pickup="for the pickup, tsinelas"
 
 [gui]
 
