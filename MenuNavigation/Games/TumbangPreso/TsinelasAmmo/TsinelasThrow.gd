@@ -12,7 +12,3 @@ func throw(strength):
 	instance.transform.basis = barrel.global_transform.basis
 	instance.throw_dir = (barrel.global_basis * barrel.target_position).normalized()
 	get_tree().root.add_child(instance)
-
-func _process(delta: float) -> void:
-	
-	pass

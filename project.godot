@@ -122,6 +122,14 @@ c={
 pointing/emulate_touch_from_mouse=true
 pointing/emulate_mouse_from_touch=false
 
+[layer_names]
+
+3d_physics/layer_1="Everything"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Guard"
+3d_physics/layer_4="Tsinelas"
+3d_physics/layer_5="Can"
+
 [physics]
 
 common/enable_pause_aware_picking=true

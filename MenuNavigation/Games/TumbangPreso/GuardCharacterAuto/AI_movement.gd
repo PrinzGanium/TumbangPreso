@@ -12,7 +12,14 @@ var idlePosition
 
 var SPEED = 5
 var tStart = 0
-	
+
+func _ready():
+	set_physics_process(false)
+	await  get_tree().physics_frame
+	await  get_tree().physics_frame
+	await  get_tree().physics_frame
+	set_physics_process(true)
+
 func update_target_loc(loc):
 	NavAgent.target_position = (loc)
 

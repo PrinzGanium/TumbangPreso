@@ -1,13 +1,15 @@
 extends Node
 class_name ThrowerSM
 
-enum States {IDLE, AIM, RETRIEVE, LURE}
+enum States {IDLE, RETRIEVE, LURE, FLEE}
 var currentstate = States.IDLE
 var holdState = States.IDLE
 
 var aware = false
 
 @onready var label = $"../StateLabel"
+@onready var timer = $"StateTimer"
+@onready var weapon = $"../Head/Camera3D/Thrower"
 
 func _ready() -> void:
 	GuardSignal.guardCommand.connect(set_state)
@@ -34,3 +36,13 @@ func set_aware(y):
 
 func deactivate():
 	pass
+
+func next_state():
+	set_state(States.IDLE)
+	weapon.throw(1)
+	
+	pass
+
+func _on_state_timer_timeout() -> void:
+	next_state()
+	pass # Replace with function body.

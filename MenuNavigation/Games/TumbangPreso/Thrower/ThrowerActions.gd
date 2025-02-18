@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 		stats.ammo -= 1
 		hide_tsinelas(bool(stats.ammo))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$"../Head/Camera3D/Thrower/HUD/ChargeBar".value = 100 * (1 - timer.time_left)
 	
 func hide_tsinelas(t : bool):

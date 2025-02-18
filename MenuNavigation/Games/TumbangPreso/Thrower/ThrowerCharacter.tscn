@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/player.gd" id="1_xfri8"]
 [ext_resource type="PackedScene" uid="uid://b1y2heenk7d8k" path="res://MenuNavigation/Games/TumbangPreso/Thrower/thrower.tscn" id="2_j1obb"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerActions.gd" id="2_oaxbg"]
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerActions.gd" id="2_pk7rj"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/Thrower_Stats.gd" id="2_xxv7p"]
 [ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas.glb" id="3_1ou83"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="4_hurmf"]
@@ -19,7 +19,7 @@ floor_max_angle = 1.0472
 script = ExtResource("1_xfri8")
 
 [node name="Actions" type="Node" parent="."]
-script = ExtResource("2_oaxbg")
+script = ExtResource("2_pk7rj")
 
 [node name="Timer" type="Timer" parent="Actions"]
 one_shot = true

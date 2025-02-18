@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhr8vgahay14c"]
 
+[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerActionsAuto.gd" id="1_64abk"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/thrower_character_auto.gd" id="1_71i5n"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerActions.gd" id="2_5lhjp"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/Thrower_Stats.gd" id="3_8wqgw"]
 [ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/thrower_state_machine.gd" id="4_ec2ia"]
 [ext_resource type="PackedScene" uid="uid://b1y2heenk7d8k" path="res://MenuNavigation/Games/TumbangPreso/Thrower/thrower.tscn" id="4_rbsqx"]
@@ -27,7 +27,7 @@ floor_max_angle = 1.0472
 script = ExtResource("1_71i5n")
 
 [node name="Actions" type="Node" parent="."]
-script = ExtResource("2_5lhjp")
+script = ExtResource("1_64abk")
 
 [node name="Timer" type="Timer" parent="Actions"]
 one_shot = true
@@ -37,6 +37,10 @@ script = ExtResource("3_8wqgw")
 
 [node name="ThrowerStateMachine" type="Node" parent="."]
 script = ExtResource("4_ec2ia")
+
+[node name="StateTimer" type="Timer" parent="ThrowerStateMachine"]
+wait_time = 3.0
+autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 2
@@ -145,5 +149,7 @@ transform = Transform3D(0.247424, 0.0603174, -0.0129706, -0.0284145, 0.0638199, 
 transform = Transform3D(0.524223, 0, 0, 0, 0.539793, 0, 0, 0, 1, 0, 0, -0.6849)
 material_override = SubResource("StandardMaterial3D_lmyyj")
 mesh = SubResource("QuadMesh_oyxvi")
+
+[connection signal="timeout" from="ThrowerStateMachine/StateTimer" to="ThrowerStateMachine" method="_on_state_timer_timeout"]
 
 [editable path="Head/Camera3D/Thrower"]

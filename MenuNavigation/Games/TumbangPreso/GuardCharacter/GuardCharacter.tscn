@@ -13,6 +13,9 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="Guard" type="CharacterBody3D" groups=["guard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.74355, 0)
+collision_layer = 4
+collision_mask = 27
+input_ray_pickable = false
 floor_max_angle = 1.0472
 script = ExtResource("1_7s7db")
 
@@ -38,7 +41,7 @@ cull_mask = 1048571
 
 [node name="InteractRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -4)
-collision_mask = 17
+collision_mask = 18
 collide_with_areas = true
 script = ExtResource("4_g7387")
 

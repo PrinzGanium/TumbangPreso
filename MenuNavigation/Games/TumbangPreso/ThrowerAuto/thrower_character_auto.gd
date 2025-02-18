@@ -6,16 +6,25 @@ class_name Thrower
 @onready var SM : ThrowerSM = $ThrowerStateMachine
 @onready var stats = $PlayerStats
 
-@onready var Player = get_tree().get_first_node_in_group("tapon")
+@onready var Player = get_tree().get_first_node_in_group("guard")
 @onready var Can = get_tree().get_first_node_in_group("can")
+@onready var idlepath = $"../WorldEnvironment/ThrowerPath/ThrowerLocation"
 var idlePosition
+var idleTravel = false
+
 
 var SPEED = 5
 var tStart = 0
 	
+func _ready() -> void:
+	set_physics_process(false)
+	await  get_tree().physics_frame
+	await  get_tree().physics_frame
+	await  get_tree().physics_frame
+	set_physics_process(true)
+	
 func update_target_loc(loc):
 	NavAgent.target_position = (loc)
-
 
 func _physics_process(_delta: float) -> void:
 	var look_pos
@@ -23,9 +32,14 @@ func _physics_process(_delta: float) -> void:
 	match SM.currentstate:
 		SM.States.IDLE:
 			SPEED = 4
-			idlePosition = (Player.global_position - Vector3.ZERO) * 2/5
-			target_pos = idlePosition
-			look_pos = Player.global_position
+			if not idleTravel:
+				idlepath.progress_ratio = randf()
+				idleTravel = true
+			if (global_position - idlepath.position).length() < 0.6:
+				SPEED = 0
+				idleTravel = false
+			target_pos = idlepath.position
+			look_pos = Can.global_position
 		_:
 			pass
 	update_target_loc(target_pos)

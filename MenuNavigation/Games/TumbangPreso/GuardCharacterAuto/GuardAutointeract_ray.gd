@@ -2,7 +2,6 @@ extends RayCast3D
 
 signal can
 signal home
-signal playerCaught
 
 
 @export var auto = false
@@ -23,11 +22,11 @@ func _process(_delta: float) -> void:
 		
 		if collider.is_in_group("can") and SM.currentstate == GuardSM.States.RETREIVE:
 			collider.interact(self)
-			emit_signal("can")
+			can.emit()
 		
 		if collider.is_in_group("playarea") and SM.currentstate == GuardSM.States.RETURN:
 			collider.interact(self)
-			emit_signal("home")
+			home.emit()
 		
 		if collider.is_in_group("tapon") and not caught:
 			caught = true
