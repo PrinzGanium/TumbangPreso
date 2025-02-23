@@ -1,11 +1,12 @@
 extends Node
 class_name ThrowerSM
 
-enum States {IDLE, RETRIEVE, LURE, FLEE}
+enum States {IDLE, WAIT, RETRIEVE, LURE, FLEE}
 var currentstate = States.IDLE
-var holdState = States.IDLE
+var nextState = States.IDLE
 
 var aware = false
+var can = true
 
 @onready var label = $"../StateLabel"
 @onready var timer = $"StateTimer"
@@ -13,8 +14,11 @@ var aware = false
 @onready var stats  = $"../PlayerStats"
 
 func _ready() -> void:
-	GuardSignal.guardCommand.connect(set_state)
-	GuardSignal.playerAware.connect(set_aware)
+	GlobalSignals.guardCommand.connect(set_state)
+	GlobalSignals.playerAware.connect(set_aware)
+	GlobalSignals.canTake.connect(canTake)
+	GlobalSignals.canDown.connect(canTake)
+	GlobalSignals.canReturn.connect(canBack)
 
 func set_state(newState):
 	var p = false
@@ -25,10 +29,21 @@ func set_state(newState):
 				p = true
 			States.LURE:
 				p = true
+			States.WAIT:
+				p = true
 			States.RETRIEVE:
 				match newState:
-					States.FLEE:	p = true
-					States.RETRIEVE:	p = true
+					States.IDLE:
+						p = true
+					States.LURE:
+						p = true
+					States.WAIT:
+						p = true
+					States.FLEE:
+						p = true
+			States.WAIT:
+				if newState == States.IDLE:
+					p = true
 			States.FLEE:
 				match newState:
 					States.IDLE:
@@ -39,6 +54,10 @@ func set_state(newState):
 				pass
 		if p:	
 			currentstate = newState
+		if currentstate == States.IDLE or currentstate == States.FLEE or currentstate == States.WAIT:
+			timer.start()
+		else:
+			timer.stop()
 	pass
 
 func _process(_delta: float) -> void:
@@ -50,6 +69,7 @@ func match_label():
 		States.RETRIEVE:	label.text = str("RETRIEVE")
 		States.LURE:		label.text = str("LURE")
 		States.FLEE:		label.text = str("FLEE")
+		States.WAIT:		label.text = str("WAIT")
 
 func force_state(newState):
 	currentstate = newState
@@ -62,16 +82,47 @@ func set_aware(y):
 func deactivate():
 	pass
 
+func in_area():
+	pass
+
+func canTake():
+	can = false
+	if stats.ammo < 3:
+		force_state(States.RETRIEVE)
+	else:
+		force_state(States.WAIT)
+	pass
+
+func canBack():
+	can = true
+	force_state(States.IDLE)
+	pass
 
 func _on_state_timer_timeout() -> void:
-	set_state(States.IDLE)
+	_on_player_stats_ammochange()
 	pass # Replace with function body.
 
 
 func _on_player_stats_ammochange() -> void:
-	var p = stats.ammo/3
-	if randf() < p:
-		set_state(States.RETRIEVE)
-	else:
-		set_state(States.IDLE) 
+	# Force state on boundaries
+	var nState
+	if stats.ammo == 3:
+		nState = States.IDLE 
+	elif stats.ammo == 0:
+		nState = States.RETRIEVE
+	else: #Selects by chance whether to swap
+		if randf() > stats.ammo/3:
+			nState = States.RETRIEVE
+		else:
+			nState = States.IDLE 
+
+	#If can is not present, choose actions differently.
+	if not can:
+		if stats.ammo < 3:
+			nState = States.RETRIEVE
+		else:
+			nState = States.WAIT
+	set_state(nState)
 	pass # Replace with function body.
+
+# we want to wait till he retrieves the thing so he doesnt bounce around.

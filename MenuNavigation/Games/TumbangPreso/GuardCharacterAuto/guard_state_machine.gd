@@ -10,8 +10,8 @@ var aware = false
 @onready var label = $"../StateLabel"
 
 func _ready() -> void:
-	GuardSignal.guardCommand.connect(set_state)
-	GuardSignal.playerAware.connect(set_aware)
+	GlobalSignals.guardCommand.connect(set_state)
+	GlobalSignals.playerAware.connect(set_aware)
 
 func set_state(newState):
 	var p = false

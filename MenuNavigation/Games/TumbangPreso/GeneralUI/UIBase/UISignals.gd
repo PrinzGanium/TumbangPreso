@@ -4,7 +4,7 @@ extends CanvasLayer
 var points = 0
 
 @onready var MControls = $"Controls" 
-
+@onready var GT = $Time/GameTimer
 @export_dir var otherScene
 
 # Called when the node enters the scene tree for the first time.
@@ -15,13 +15,15 @@ func _ready() -> void:
 		#MControls.show()
 	#else:
 		#MControls.hide()
+	if GlobalSignals.passtime:
+		time = GlobalSignals.timeleft
+		points = GlobalSignals.passScore
 	clean_up()
-	
 	
 	$AnimationPlayer.play("Announcer")
 	
-	GuardSignal.playerCaught.connect(LoseGame)
-	GuardSignal.canHit.connect(updatePoints)
+	GlobalSignals.playerCaught.connect(LoseGame)
+	GlobalSignals.canHit.connect(updatePoints)
 	pass # Replace with function body.
 
 func clean_up() -> void:
@@ -43,6 +45,9 @@ func LoseGame() -> void:
 
 func swapScene() -> void:
 	get_tree().change_scene_to_file(otherScene)
+	GlobalSignals.timeleft = GT.time_left
+	GlobalSignals.passtime = true
+	GlobalSignals.passScore = points
 
 func updatePoints():
 	points += 1

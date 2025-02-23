@@ -15,12 +15,8 @@ signal ammochange
 func _process(_delta: float) -> void:
 	ammotext.text = "Tsinelas:" + str(ammo)
 
-
-
 func tag():
-	canTag = true
 	tagLabel.text = "Maari kang hulihin!!!"
 
 func untag():
-	canTag = false
 	tagLabel.text = "Di ka mahuhuli dito!"

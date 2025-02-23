@@ -9,6 +9,8 @@ signal playerCaught
 @onready var stats = $"../../../PlayerStats"
 @onready var prompt = $Prompt
 
+var holdCan = false
+@onready var canModel = $"../Can"
 func ignore():
 	can.emit()
 	home.emit()
@@ -22,15 +24,28 @@ func _process(_delta: float) -> void:
 		prompt.text  = "detecting " + collider.name
 			
 		
-		if Input.is_action_just_pressed("leftclick"):
+		if true:
 			if collider.is_in_group("can"):
-				collider.interact(self)
-				emit_signal("can")
+				var s = collider.interact(self)
+				if s:
+					emit_signal("can")
+					holdCan = true
+					canModel.show()
+					GlobalSignals.canTake.emit()
 			
 			if collider.is_in_group("playarea"):
-				collider.interact(self)
-				emit_signal("home")
+				var s = collider.interact(self)
+				if s:
+					holdCan = false
+					canModel.hide()
+					emit_signal("home")
 			
 			if collider.is_in_group("tapon"):
-				print("caught")
-				GuardSignal.emit_signal("playerCaught")
+				if collider.catchable:
+					print("can catch!")
+					if not holdCan:
+						print("no can!")					
+						print("caught")
+						GlobalSignals.emit_signal("playerCaught")
+				else:
+					print("not catchable :<")

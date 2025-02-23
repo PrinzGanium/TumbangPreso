@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="TumbangPreso"
-run/main_scene="res://MenuNavigation/Games/TumbangPreso/World/GameTP-Thrower.tscn"
+run/main_scene="res://MenuNavigation/Games/TumbangPreso/World/GameTP-Taya.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
 [autoload]
 
-GuardSignal="*res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_signal.tscn"
+GlobalSignals="*res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_signal.tscn"
 Settings="*res://MenuNavigation/Settings/Settings.gd"
 
 [display]

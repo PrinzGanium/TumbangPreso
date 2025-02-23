@@ -31,4 +31,4 @@ func _process(_delta: float) -> void:
 		if collider.is_in_group("tapon") and not caught:
 			caught = true
 			print("caught")
-			GuardSignal.emit_signal("playerCaught")
+			GlobalSignals.emit_signal("playerCaught")

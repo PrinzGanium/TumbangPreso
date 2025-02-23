@@ -30,8 +30,6 @@ script = ExtResource("1_71i5n")
 script = ExtResource("1_64abk")
 
 [node name="Timer" type="Timer" parent="Actions"]
-wait_time = 3.0
-one_shot = true
 autostart = true
 
 [node name="PlayerStats" type="Node" parent="."]
@@ -41,7 +39,6 @@ script = ExtResource("3_8wqgw")
 script = ExtResource("4_ec2ia")
 
 [node name="StateTimer" type="Timer" parent="ThrowerStateMachine"]
-wait_time = 3.0
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -52,6 +49,7 @@ mesh = SubResource("CapsuleMesh_0m0o8")
 shape = SubResource("ConvexPolygonShape3D_3fton")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 
 [node name="StateLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35736, 0)

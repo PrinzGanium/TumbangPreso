@@ -3,6 +3,8 @@ extends Node
 @onready var stats = $"../PlayerStats"
 @onready var weapon = $"../Head/Camera3D/Thrower"
 @onready var timer = $Timer
+@onready var SM = $"../ThrowerStateMachine"
+
 
 func add_ammo():
 	stats.ammo += 1
@@ -10,7 +12,8 @@ func add_ammo():
 
 
 func _on_timer_timeout() -> void:
-	if stats.ammo > 0:
+	# throw when can active
+	if stats.ammo > 0 and SM.currentstate == SM.States.IDLE and $"..".canThrow:
 		weapon.throw(1)
 		stats.ammo -= 1
 		timer.wait_time = randf_range(1.0, 3.0)

@@ -10,6 +10,9 @@ class_name Thrower
 @onready var Can = get_tree().get_first_node_in_group("can")
 @onready var idlepath = $"../ThrowerPath/ThrowerLocation"
 
+var catchable = false
+var canThrow = true
+
 var idlePosition
 var idleTravel = false
 
@@ -19,6 +22,11 @@ var SPEED = 5
 var tStart = 0
 	
 func _ready() -> void:
+	GlobalSignals.canDown.connect(catchOff)
+	GlobalSignals.canTake.connect(catchOff)
+	GlobalSignals.canReturn.connect(catchOn)
+	GlobalSignals.ThrowerInArea.connect(inArea)
+	GlobalSignals.ThrowerOutArea.connect(outArea)
 	set_physics_process(false)
 	await  get_tree().physics_frame
 	await  get_tree().physics_frame
@@ -31,40 +39,50 @@ func update_target_loc(loc):
 	NavAgent.target_position = (loc)
 
 func _physics_process(_delta: float) -> void:
-	var look_pos
-	var target_pos
+	var look_pos = Vector3.FORWARD
+	var target_pos = Vector3.FORWARD
 	
-	match SM.currentstate:
-		
+	if (Player.global_position - global_position).length() < 4.0:
+		SM.set_state(SM.States.FLEE)
+	
+	match SM.currentstate:	
 		SM.States.IDLE:
-			SPEED = 4
-			
+			SPEED = 8 + randf_range(-1.0, 1.0)
 			if not idleTravel:
 				idlepath.progress_ratio = randf()
 				idleTravel = true
 			if (global_position - idlepath.position).length() < 0.6:
-				SPEED = 0
+				SPEED = 0 + randf_range(-1.0, 1.0)
 				idleTravel = false
-			
 			target_pos = idlepath.position
 			look_pos = Can.global_position
 		SM.States.RETRIEVE:
-			SPEED = 8
+			SPEED = 12 + randf_range(-1.0, 1.0)
 			var pickup = get_tree().get_nodes_in_group("pickup")
-			if not findT:
-				var t = find_closest(pickup)
-				target_pos = t
-				look_pos = t
-				findT = true
-			if pickup.is_empty():
-				SM.next_state()
+			var p = find_closest(pickup)
+			if p:
+				target_pos = p.global_position
+				look_pos = p.global_position
+			#if pickup.is_empty():
+				#SM.force_state(SM.States.IDLE)
 		SM.States.FLEE:
-			SPEED = 8
-			target_pos = -abs(Player.global_position - global_position)
-			look_pos = global_position - Player.global_position
+			SPEED = 16 + randf_range(-1.0, 1.0)
+			look_pos = global_position + (global_position-Player.global_position).normalized() * 2
+			target_pos = global_position + (global_position-Player.global_position).normalized() * 2
+			
 		SM.States.LURE:
 			target_pos = idlepath.position
 			look_pos = Player.global_position
+		SM.States.WAIT:
+			SPEED = 12 + randf_range(-1.0, 1.0)
+			if not idleTravel:
+				idlepath.progress_ratio = randf()
+				idleTravel = true
+			if (global_position - idlepath.position).length() < 0.6:
+				SPEED = 0 + randf_range(-1.0, 1.0)
+				idleTravel = false
+			target_pos = idlepath.position
+			look_pos = Can.global_position
 		_:
 			pass
 	update_target_loc(target_pos)
@@ -77,19 +95,36 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func find_closest(choices:Array) -> Vector3:
+func find_closest(choices:Array):
 	var closest = Vector3.INF
+	var pick
 	for v in choices:
-		if abs(global_position - v.global_position) < closest:
-			closest = v.global_position
-	return closest
+		var distance = abs(global_position - v.global_position)
+		if distance < closest:
+			closest = distance
+			pick = v
+	if pick: return pick
+	else: return
 
 
 func gain_ammo():
+	print("GAIN AMMO")
 	$Actions.add_ammo()
-	findT = false
-	var p = stats.ammo/3
-	if randf() <= p:
-		SM.set_state(SM.States.IDLE)
-	else:
-		SM.set_state(SM.States.RETRIEVE)
+	
+func catchOn():
+	catchable = false
+	pass
+
+func catchOff():
+	catchable = true
+	pass
+
+func inArea():
+	canThrow = false
+	catchable = true
+	pass
+
+func outArea():
+	canThrow = true
+	catchable = false
+	pass

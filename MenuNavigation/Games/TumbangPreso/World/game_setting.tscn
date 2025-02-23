@@ -43,6 +43,30 @@ material_override = SubResource("StandardMaterial3D_372yn")
 use_collision = true
 size = Vector3(0.163086, 18.5535, 4)
 
+[node name="Wall5" type="CSGBox3D" parent="."]
+transform = Transform3D(15.4856, 0, -15.4856, 0, 1, 0, 15.4856, 0, 15.4856, -13.0019, 8.33395, -36.9735)
+material_override = SubResource("StandardMaterial3D_372yn")
+use_collision = true
+size = Vector3(0.163086, 18.5535, 4)
+
+[node name="Wall6" type="CSGBox3D" parent="."]
+transform = Transform3D(15.4856, 0, -15.4856, 0, 1, 0, 15.4856, 0, 15.4856, 9.9981, 8.33395, 40.0265)
+material_override = SubResource("StandardMaterial3D_372yn")
+use_collision = true
+size = Vector3(0.163086, 18.5535, 4)
+
+[node name="Wall7" type="CSGBox3D" parent="."]
+transform = Transform3D(15.4856, 0, 15.4856, 0, 1, 0, -15.4856, 0, 15.4856, -8.0019, 8.33395, 40.0265)
+material_override = SubResource("StandardMaterial3D_372yn")
+use_collision = true
+size = Vector3(0.163086, 18.5535, 4)
+
+[node name="Wall8" type="CSGBox3D" parent="."]
+transform = Transform3D(15.4856, 0, 15.4856, 0, 1, 0, -15.4856, 0, 15.4856, 12.9981, 8.33395, -37.9735)
+material_override = SubResource("StandardMaterial3D_372yn")
+use_collision = true
+size = Vector3(0.163086, 18.5535, 4)
+
 [node name="Wall2" type="CSGBox3D" parent="."]
 transform = Transform3D(21.9, 0, 0, 0, 1, 0, 0, 0, 21.9, 14.0853, 8.33395, 0.0264972)
 material_override = SubResource("StandardMaterial3D_372yn")
@@ -70,7 +94,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.
 material_override = SubResource("StandardMaterial3D_eut0n")
 
 [node name="HoloCan" parent="PlayArea" index="2"]
-transform = Transform3D(0.965926, -0.258819, -2.97886e-09, 0.258819, 0.965926, 6.32429e-08, -1.34911e-08, -6.1859e-08, 1, 0, 1.33033, 0)
+transform = Transform3D(0.965926, -0.258819, -2.97886e-09, 0.258819, 0.965926, 6.46546e-08, -1.38565e-08, -6.32225e-08, 1, 0, 1.33033, 0)
 
 [connection signal="bake_finished" from="." to="." method="_on_bake_finished"]
 

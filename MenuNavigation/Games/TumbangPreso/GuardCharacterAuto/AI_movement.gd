@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 			idlePosition = (Player.global_position - Vector3.ZERO) * 2/5
 			target_pos = idlePosition
 			look_pos = Player.global_position
-			GuardSignal.emit_signal("guardCommand", GuardSM.States.IDLE)
+			GlobalSignals.emit_signal("guardCommand", GuardSM.States.IDLE)
 		_:
 			pass
 	update_target_loc(target_pos)
