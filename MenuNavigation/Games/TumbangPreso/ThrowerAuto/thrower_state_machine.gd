@@ -14,7 +14,6 @@ var can = true
 @onready var stats  = $"../PlayerStats"
 
 func _ready() -> void:
-	GlobalSignals.guardCommand.connect(set_state)
 	GlobalSignals.playerAware.connect(set_aware)
 	GlobalSignals.canTake.connect(canTake)
 	GlobalSignals.canDown.connect(canTake)
@@ -106,15 +105,10 @@ func _on_state_timer_timeout() -> void:
 func _on_player_stats_ammochange() -> void:
 	# Force state on boundaries
 	var nState
-	if stats.ammo == 3:
+	if stats.ammo >= 1 :
 		nState = States.IDLE 
-	elif stats.ammo == 0:
+	elif stats.ammo <= 0:
 		nState = States.RETRIEVE
-	else: #Selects by chance whether to swap
-		if randf() > stats.ammo/3:
-			nState = States.RETRIEVE
-		else:
-			nState = States.IDLE 
 
 	#If can is not present, choose actions differently.
 	if not can:

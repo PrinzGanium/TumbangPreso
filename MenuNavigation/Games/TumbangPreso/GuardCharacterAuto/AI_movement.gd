@@ -10,6 +10,7 @@ class_name Guard
 @onready var Can = get_tree().get_first_node_in_group("can")
 var idlePosition
 
+var BASESPEED = 10
 var SPEED = 5
 var tStart = 0
 
@@ -29,24 +30,24 @@ func _physics_process(_delta: float) -> void:
 	var target_pos
 	match SM.currentstate:
 		SM.States.IDLE:
-			SPEED = 4
+			SPEED = BASESPEED+ randf_range(-1.0, 1.0)
 			idlePosition = (Player.global_position - Vector3.ZERO) * 2/5
 			target_pos = idlePosition
 			look_pos = Player.global_position
 		SM.States.CHASE:
-			SPEED = 8 + randf()*2
+			SPEED = BASESPEED * 1.2 + randf_range(-1.0, 1.0)
 			target_pos = Player.global_position
 			look_pos = target_pos
 		SM.States.RETURN:
-			SPEED = 10
+			SPEED = BASESPEED * 1.2 + randf_range(-1.0, 1.0)
 			target_pos = Vector3(0,0,0)
 			look_pos = target_pos
 		SM.States.RETREIVE:
-			SPEED = 10
+			SPEED = BASESPEED * 1.2 + randf_range(-1.0, 1.0)
 			target_pos = Can.global_position
 			look_pos = target_pos
 		SM.States.DONE:
-			SPEED = 4
+			SPEED = BASESPEED + randf_range(-1.0, 1.0)
 			idlePosition = (Player.global_position - Vector3.ZERO) * 2/5
 			target_pos = idlePosition
 			look_pos = Player.global_position

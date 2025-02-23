@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var ver = "Taya"
 @export var time = 30
 var points = 0
 

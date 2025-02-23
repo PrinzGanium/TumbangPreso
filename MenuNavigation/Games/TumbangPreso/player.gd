@@ -3,8 +3,8 @@ extends CharacterBody3D
 @export var active = false
 var speed = 0.0
 
-const SPRINT_SPEED = 10.0
-const WALK_SPEED = 5.0
+const SPRINT_SPEED = 9.0
+const WALK_SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 
@@ -21,9 +21,14 @@ const FOV_CHANGE = 1.5
 @onready var camera = $Head/Camera3D
 @onready var stats = $PlayerStats
 
+var Capture = true
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	GlobalSignals.canDown.connect(cantCatch)
+	GlobalSignals.canReturn.connect(canCatch)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -69,6 +74,14 @@ func _physics_process(delta: float) -> void:
 	camera.transform.origin = _headbob(t_bob)
 	
 	move_and_slide()
+
+func cantCatch():
+	Capture = true
+	pass
+
+func canCatch():
+	Capture = false
+	pass
 
 func _headbob(time):
 	var pos = Vector3.ZERO

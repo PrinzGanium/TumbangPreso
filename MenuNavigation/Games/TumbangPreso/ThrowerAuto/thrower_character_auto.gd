@@ -11,6 +11,12 @@ class_name Thrower
 @onready var idlepath = $"../ThrowerPath/ThrowerLocation"
 
 var catchable = false
+var catchBounds = false
+
+#catch conditions.
+# 1. Thrower in the area
+# 2. Can is NOT knocked down
+
 var canThrow = true
 
 var idlePosition
@@ -18,13 +24,11 @@ var idleTravel = false
 
 var findT = false
 
+var BASESPEED = 10
 var SPEED = 5
 var tStart = 0
 	
 func _ready() -> void:
-	GlobalSignals.canDown.connect(catchOff)
-	GlobalSignals.canTake.connect(catchOff)
-	GlobalSignals.canReturn.connect(catchOn)
 	GlobalSignals.ThrowerInArea.connect(inArea)
 	GlobalSignals.ThrowerOutArea.connect(outArea)
 	set_physics_process(false)
@@ -47,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 	
 	match SM.currentstate:	
 		SM.States.IDLE:
-			SPEED = 8 + randf_range(-1.0, 1.0)
+			SPEED = BASESPEED * 0.8 + randf_range(-1.0, 1.0)
 			if not idleTravel:
 				idlepath.progress_ratio = randf()
 				idleTravel = true
@@ -57,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 			target_pos = idlepath.position
 			look_pos = Can.global_position
 		SM.States.RETRIEVE:
-			SPEED = 12 + randf_range(-1.0, 1.0)
+			SPEED = BASESPEED * 1.2 + randf_range(-1.0, 1.0)
 			var pickup = get_tree().get_nodes_in_group("pickup")
 			var p = find_closest(pickup)
 			if p:
@@ -66,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 			#if pickup.is_empty():
 				#SM.force_state(SM.States.IDLE)
 		SM.States.FLEE:
-			SPEED = 16 + randf_range(-1.0, 1.0)
+			SPEED = BASESPEED * 1.4 + randf_range(-1.0, 1.0)
 			look_pos = global_position + (global_position-Player.global_position).normalized() * 2
 			target_pos = global_position + (global_position-Player.global_position).normalized() * 2
 			
@@ -74,7 +78,7 @@ func _physics_process(_delta: float) -> void:
 			target_pos = idlepath.position
 			look_pos = Player.global_position
 		SM.States.WAIT:
-			SPEED = 12 + randf_range(-1.0, 1.0)
+			SPEED = BASESPEED * 0.8 + randf_range(-1.0, 1.0)
 			if not idleTravel:
 				idlepath.progress_ratio = randf()
 				idleTravel = true
@@ -110,14 +114,6 @@ func find_closest(choices:Array):
 func gain_ammo():
 	print("GAIN AMMO")
 	$Actions.add_ammo()
-	
-func catchOn():
-	catchable = false
-	pass
-
-func catchOff():
-	catchable = true
-	pass
 
 func inArea():
 	canThrow = false
@@ -128,3 +124,6 @@ func outArea():
 	canThrow = true
 	catchable = false
 	pass
+
+func interact(collider):
+	return catchable

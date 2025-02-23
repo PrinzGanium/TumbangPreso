@@ -33,6 +33,7 @@ edge_fade = 37.4806
 [node name="World" type="Node3D"]
 
 [node name="UI" parent="." instance=ExtResource("3_gi0kj")]
+ver = "Tapon"
 time = 120
 otherScene = "res://MenuNavigation/Games/TumbangPreso/World/GameTP-Taya.tscn"
 

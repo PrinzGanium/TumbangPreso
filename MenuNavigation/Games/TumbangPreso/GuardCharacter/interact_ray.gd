@@ -1,19 +1,16 @@
 extends RayCast3D
 
-signal can
-signal home
 signal playerCaught
 
 
 @export var auto = false
 @onready var stats = $"../../../PlayerStats"
 @onready var prompt = $Prompt
+@onready var base = $"../../.."
 
 var holdCan = false
 @onready var canModel = $"../Can"
 func ignore():
-	can.emit()
-	home.emit()
 	playerCaught.emit()
 
 func _process(_delta: float) -> void:
@@ -28,8 +25,9 @@ func _process(_delta: float) -> void:
 			if collider.is_in_group("can"):
 				var s = collider.interact(self)
 				if s:
-					emit_signal("can")
 					holdCan = true
+					base.Capture = false
+					
 					canModel.show()
 					GlobalSignals.canTake.emit()
 			
@@ -37,15 +35,12 @@ func _process(_delta: float) -> void:
 				var s = collider.interact(self)
 				if s:
 					holdCan = false
+					base.Capture = true
 					canModel.hide()
-					emit_signal("home")
+					GlobalSignals.canReturn.emit()
 			
 			if collider.is_in_group("tapon"):
-				if collider.catchable:
-					print("can catch!")
-					if not holdCan:
-						print("no can!")					
-						print("caught")
-						GlobalSignals.emit_signal("playerCaught")
-				else:
-					print("not catchable :<")
+				var s = collider.interact(self)
+				if s:
+					print("caught")
+					GlobalSignals.emit_signal("playerCaught")
