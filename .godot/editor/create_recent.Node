@@ -1,3 +1,7 @@
+CSGBox3D
+Button
+Node3D
+AudioStreamPlayer
 StaticBody3D
 Timer
 PathFollow3D
@@ -9,7 +13,3 @@ NavigationAgent3D
 CSGMesh3D
 Node
 Control
-AnimationPlayer
-AnimationTree
-Label
-TextureRect

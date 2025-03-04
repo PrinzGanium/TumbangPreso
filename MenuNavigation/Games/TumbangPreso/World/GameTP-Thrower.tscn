@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cv7p3ygtm3smi"]
+[gd_scene load_steps=11 format=3 uid="uid://cv7p3ygtm3smi"]
 
 [ext_resource type="PackedScene" uid="uid://33ioiqywyxyd" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerCharacter.tscn" id="1_eqhso"]
 [ext_resource type="PackedScene" uid="uid://wlrskqhtd3su" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/GuardCharacterAuto.tscn" id="2_2ot0n"]
 [ext_resource type="PackedScene" uid="uid://cfaq6c14a5j5d" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/ui.tscn" id="3_gi0kj"]
 [ext_resource type="PackedScene" uid="uid://bp70bguxubw6a" path="res://MenuNavigation/Games/TumbangPreso/World/game_setting.tscn" id="4_txqrh"]
+[ext_resource type="AudioStream" uid="uid://dwgjx0g30v4kw" path="res://Assets/Audio/sitsiritsit_final.mp3" id="6_b038r"]
 [ext_resource type="PackedScene" uid="uid://crdbr0yms4kos" path="res://MenuNavigation/Games/TumbangPreso/World/decor.tscn" id="7_nkxbw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aeqmb"]
@@ -34,7 +35,7 @@ edge_fade = 37.4806
 
 [node name="UI" parent="." instance=ExtResource("3_gi0kj")]
 ver = "Tapon"
-time = 120
+time = 30
 otherScene = "res://MenuNavigation/Games/TumbangPreso/World/GameTP-Taya.tscn"
 
 [node name="Player" parent="." instance=ExtResource("1_eqhso")]
@@ -61,3 +62,7 @@ shadow_enabled = true
 [node name="GameSetting" parent="." instance=ExtResource("4_txqrh")]
 
 [node name="Decor" parent="." instance=ExtResource("7_nkxbw")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_b038r")
+autoplay = true

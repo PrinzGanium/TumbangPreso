@@ -70,6 +70,7 @@ transform = Transform3D(0.990868, -0.0053997, -0.134725, 0.0132812, 0.998247, 0.
 target_position = Vector3(0, 0, -100)
 
 [node name="HUD" type="Control" parent="Head/Camera3D/Thrower"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,6 +80,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ChargeBar" type="ProgressBar" parent="Head/Camera3D/Thrower/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -93,6 +95,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="crosshair" type="TextureRect" parent="Head/Camera3D/Thrower/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,6 +112,7 @@ mouse_filter = 2
 texture = ExtResource("5_81d43")
 
 [node name="TsinelasLabel" type="Label" parent="Head/Camera3D/Thrower/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -128,6 +132,7 @@ theme_override_font_sizes/font_size = 32
 text = "Tsinelas: "
 
 [node name="WarningLabel" type="Label" parent="Head/Camera3D/Thrower/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

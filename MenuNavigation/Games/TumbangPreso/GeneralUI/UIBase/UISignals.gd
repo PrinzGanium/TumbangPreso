@@ -56,5 +56,7 @@ func updatePoints():
 	pass
 
 func _on_game_timer_timeout() -> void:
-	get_tree().quit()
+	otherScene = "res://MenuNavigation/EndMenu/EndMenu.tscn"
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$AnimationPlayer.play("Transfer")
 	pass # Replace with function body.

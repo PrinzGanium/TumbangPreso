@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7fdmoomavdsm"]
+[gd_scene load_steps=13 format=3 uid="uid://c7fdmoomavdsm"]
 
 [ext_resource type="PackedScene" uid="uid://cfaq6c14a5j5d" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/ui.tscn" id="1_uyxbq"]
 [ext_resource type="PackedScene" uid="uid://cdwynh7cks5xx" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardCharacter.tscn" id="2_yg8bx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhr8vgahay14c" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/ThrowerCharacterAuto.tscn" id="4_0v1v3"]
 [ext_resource type="PackedScene" uid="uid://bp70bguxubw6a" path="res://MenuNavigation/Games/TumbangPreso/World/game_setting.tscn" id="4_e33uk"]
 [ext_resource type="PackedScene" uid="uid://crdbr0yms4kos" path="res://MenuNavigation/Games/TumbangPreso/World/decor.tscn" id="5_ogyrf"]
+[ext_resource type="AudioStream" uid="uid://dwgjx0g30v4kw" path="res://Assets/Audio/sitsiritsit_final.mp3" id="7_ntdcr"]
 
 [sub_resource type="Curve3D" id="Curve3D_4smtv"]
 _data = {
@@ -41,7 +42,7 @@ edge_fade = 37.4806
 [node name="World" type="Node3D"]
 
 [node name="UI" parent="." instance=ExtResource("1_uyxbq")]
-time = 120
+time = 30
 otherScene = "res://MenuNavigation/Games/TumbangPreso/World/GameTP-Thrower.tscn"
 
 [node name="TextureRect" parent="UI/Announcer" index="1"]
@@ -56,7 +57,7 @@ text = "Ingatan ang lata at hulihin ang mga nambabato!"
 horizontal_alignment = 1
 
 [node name="Guard" parent="." instance=ExtResource("2_yg8bx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46175, 3.74355, 0)
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -0.0170212, 3.74355, 6.46315)
 
 [node name="Bato" parent="." instance=ExtResource("4_0v1v3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6316)
@@ -84,5 +85,9 @@ shadow_enabled = true
 [node name="GameSetting" parent="." instance=ExtResource("4_e33uk")]
 
 [node name="Decor" parent="." instance=ExtResource("5_ogyrf")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ntdcr")
+autoplay = true
 
 [editable path="UI"]

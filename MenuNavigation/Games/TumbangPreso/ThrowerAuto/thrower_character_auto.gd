@@ -125,5 +125,5 @@ func outArea():
 	catchable = false
 	pass
 
-func interact(collider):
+func interact(_collider):
 	return catchable
