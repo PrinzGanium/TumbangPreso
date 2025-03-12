@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=4 uid="uid://cdwynh7cks5xx"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/player.gd" id="1_7s7db"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardActions.gd" id="2_w3rf8"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/Guard_Stats.gd" id="3_c2au4"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/interact_ray.gd" id="4_g7387"]
+[ext_resource type="Script" uid="uid://c8jpdnki18jwu" path="res://MenuNavigation/Games/TumbangPreso/player.gd" id="1_7s7db"]
+[ext_resource type="Script" uid="uid://bekk1nhlplt0n" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardActions.gd" id="2_w3rf8"]
+[ext_resource type="Script" uid="uid://bishblliin3wi" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/Guard_Stats.gd" id="3_c2au4"]
+[ext_resource type="Script" uid="uid://cstb4wspf3flr" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/interact_ray.gd" id="4_g7387"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="4_xp8gi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0m0o8"]
@@ -97,7 +97,6 @@ height = 0.530328
 radius = 0.191638
 
 [node name="Guard" type="CharacterBody3D" groups=["guard"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.74355, 0)
 collision_layer = 4
 collision_mask = 27
 input_ray_pickable = false

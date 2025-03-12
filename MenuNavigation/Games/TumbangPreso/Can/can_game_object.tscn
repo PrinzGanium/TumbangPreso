@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://caeqf60dyu3xi"]
 
 [ext_resource type="PackedScene" uid="uid://cuftcvegfmf61" path="res://MenuNavigation/Games/TumbangPreso/Can/can_imported.tscn" id="1_cpt81"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.gd" id="1_ulw7h"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/can_shortscript.gd" id="3_fich5"]
+[ext_resource type="Script" uid="uid://cy5ujq5yokfkv" path="res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.gd" id="1_ulw7h"]
+[ext_resource type="Script" uid="uid://b6jn22oqt6uc5" path="res://MenuNavigation/Games/TumbangPreso/Can/can_shortscript.gd" id="3_fich5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i75hi"]
 height = 0.165221

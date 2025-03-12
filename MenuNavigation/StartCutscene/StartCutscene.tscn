@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bduegpjcgij0s"]
 
 [ext_resource type="Texture2D" uid="uid://mpxj01ybll3a" path="res://MenuNavigation/StartCutscene/introcomic1.png" id="1_2cbsd"]
-[ext_resource type="Script" path="res://MenuNavigation/StartCutscene/start_cutscene.gd" id="1_v1bto"]
+[ext_resource type="Script" uid="uid://dwdamuyejqlbt" path="res://MenuNavigation/StartCutscene/start_cutscene.gd" id="1_v1bto"]
 [ext_resource type="Texture2D" uid="uid://bi1al7nxuiakm" path="res://MenuNavigation/StartCutscene/introcomic2.png" id="2_x0ouj"]
 [ext_resource type="Texture2D" uid="uid://tphw6gssi01q" path="res://MenuNavigation/StartCutscene/introcomic3.png" id="3_8u25a"]
 [ext_resource type="Texture2D" uid="uid://bs0quqc44lbp8" path="res://MenuNavigation/StartCutscene/introcomic4.png" id="4_6gevn"]
@@ -184,9 +184,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4qjj"]
 _data = {
-"Fadeout": SubResource("Animation_8mqcv"),
-"Fader": SubResource("Animation_h4rl7"),
-"RESET": SubResource("Animation_facso")
+&"Fadeout": SubResource("Animation_8mqcv"),
+&"Fader": SubResource("Animation_h4rl7"),
+&"RESET": SubResource("Animation_facso")
 }
 
 [node name="Cutscene" type="Control"]

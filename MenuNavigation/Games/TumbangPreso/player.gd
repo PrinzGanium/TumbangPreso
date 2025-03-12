@@ -7,6 +7,7 @@ const SPRINT_SPEED = 9.0
 const WALK_SPEED = 9.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
+@export var reversed = 1
 
 #bob
 const BOB_FREQ = 3.0
@@ -56,11 +57,11 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+			velocity.x = direction.x * speed * reversed
+			velocity.z = direction.z * speed * reversed
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0) * reversed
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0) * reversed
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)

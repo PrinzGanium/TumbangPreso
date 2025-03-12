@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bslxx1lpmraua"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_projectile.gd" id="1_01n8i"]
+[ext_resource type="Script" uid="uid://c72wpnjil4j1i" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_projectile.gd" id="1_01n8i"]
 [ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas.glb" id="1_edtsv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m4uap"]

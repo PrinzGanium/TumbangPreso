@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://wlrskqhtd3su"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/AI_movement.gd" id="1_i46q3"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_state_machine.gd" id="2_yoaiw"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/Guard_Stats.gd" id="3_e7je0"]
+[ext_resource type="Script" uid="uid://cuw33sq2f22sl" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/AI_movement.gd" id="1_i46q3"]
+[ext_resource type="Script" uid="uid://c8gsrg8nia2nt" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/guard_state_machine.gd" id="2_yoaiw"]
+[ext_resource type="Script" uid="uid://bishblliin3wi" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/Guard_Stats.gd" id="3_e7je0"]
 [ext_resource type="Texture2D" uid="uid://c5otxrs0j2x8r" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/Angery.png" id="4_cw7ua"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="5_c8omn"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/GuardAutointeract_ray.gd" id="5_ok228"]
+[ext_resource type="Script" uid="uid://koau6n7l7ech" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacterAuto/GuardAutointeract_ray.gd" id="5_ok228"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0m0o8"]
 

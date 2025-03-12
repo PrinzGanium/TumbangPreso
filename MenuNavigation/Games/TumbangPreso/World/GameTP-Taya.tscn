@@ -16,16 +16,18 @@ _data = {
 point_count = 7
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aeqmb"]
+sky_top_color = Color(0.247378, 0.475015, 1, 1)
+sky_horizon_color = Color(0.461023, 0.674289, 1, 1)
 
 [sub_resource type="Sky" id="Sky_m8j4e"]
 sky_material = SubResource("ProceduralSkyMaterial_aeqmb")
 
 [sub_resource type="Environment" id="Environment_ayhgt"]
 background_mode = 2
-background_color = Color(0.663787, 0.684901, 0.0539315, 1)
+background_color = Color(5.10186e-06, 0.675266, 0.28149, 1)
 sky = SubResource("Sky_m8j4e")
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 0.803922, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.741176, 0.635294, 1)
@@ -57,7 +59,8 @@ text = "Ingatan ang lata at hulihin ang mga nambabato!"
 horizontal_alignment = 1
 
 [node name="Guard" parent="." instance=ExtResource("2_yg8bx")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -0.0170212, 3.74355, 6.46315)
+transform = Transform3D(-1, 0, 8.74232e-08, 0, 1, 0, -8.74232e-08, 0, -1, -0.0170212, 3.74355, 6.46315)
+reversed = -1
 
 [node name="Bato" parent="." instance=ExtResource("4_0v1v3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6316)
@@ -91,3 +94,5 @@ stream = ExtResource("7_ntdcr")
 autoplay = true
 
 [editable path="UI"]
+[editable path="Bato"]
+[editable path="Bato/Head/Camera3D/Thrower"]

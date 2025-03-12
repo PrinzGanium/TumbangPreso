@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b1y2heenk7d8k"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/TsinelasThrow.gd" id="1_6veql"]
+[ext_resource type="Script" uid="uid://c1jiuv83gwt4w" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/TsinelasThrow.gd" id="1_6veql"]
 
 [node name="Thrower" type="Node3D"]
 script = ExtResource("1_6veql")

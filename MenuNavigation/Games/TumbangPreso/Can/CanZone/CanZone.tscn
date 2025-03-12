@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=4 uid="uid://g308yg7b2wq2"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/playareatest.gd" id="1_1fcf8"]
+[ext_resource type="Script" uid="uid://by1w1v4aayojh" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/playareatest.gd" id="1_1fcf8"]
 [ext_resource type="PackedScene" uid="uid://caeqf60dyu3xi" path="res://MenuNavigation/Games/TumbangPreso/Can/can_game_object.tscn" id="2_8g84d"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/PlayAreaDetector.gd" id="2_dl2gt"]
+[ext_resource type="Script" uid="uid://oa8wyncro6ci" path="res://MenuNavigation/Games/TumbangPreso/Can/CanZone/PlayAreaDetector.gd" id="2_dl2gt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5oall"]
 radius = 1.5
@@ -124,8 +124,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0w3nk"]
 _data = {
-"RESET": SubResource("Animation_0oyr0"),
-"spinning_can": SubResource("Animation_c4btr")
+&"RESET": SubResource("Animation_0oyr0"),
+&"spinning_can": SubResource("Animation_c4btr")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yilns"]

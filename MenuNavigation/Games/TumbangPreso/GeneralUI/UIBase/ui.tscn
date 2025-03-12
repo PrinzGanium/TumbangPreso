@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfaq6c14a5j5d"]
+[gd_scene load_steps=13 format=3 uid="uid://cfaq6c14a5j5d"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/UISignals.gd" id="1_eaxa4"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/UItime.gd" id="2_tfjcb"]
+[ext_resource type="Script" uid="uid://cf2vvemp5xs3w" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/UISignals.gd" id="1_eaxa4"]
+[ext_resource type="Script" uid="uid://bx3pk1jnk0frj" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/UIBase/UItime.gd" id="2_tfjcb"]
+[ext_resource type="Texture2D" uid="uid://4n7qxede2ewx" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/Clock/ClockBase.png" id="3_daehc"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_l712l"]
 [ext_resource type="FontFile" uid="uid://cpcl0n6ydgeku" path="res://Assets/Font/animeace.ttf" id="4_g1h01"]
+[ext_resource type="Texture2D" uid="uid://cklndmdjv083g" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/Clock/circleHALF.png" id="4_ikgsv"]
 [ext_resource type="Texture2D" uid="uid://k1fh4cxmo61d" path="res://MenuNavigation/Games/TumbangPreso/GeneralUI/Announcer/Tagabato.png" id="5_7amvo"]
 [ext_resource type="FontFile" uid="uid://cfxt824m7bscq" path="res://Assets/Font/animeace_b.ttf" id="6_610fj"]
 
@@ -109,9 +111,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ia506"]
 _data = {
-"Announcer": SubResource("Animation_ucno4"),
-"RESET": SubResource("Animation_605ej"),
-"Transfer": SubResource("Animation_5smux")
+&"Announcer": SubResource("Animation_ucno4"),
+&"RESET": SubResource("Animation_605ej"),
+&"Transfer": SubResource("Animation_5smux")
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -129,33 +131,72 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_tfjcb")
 
-[node name="Timer" type="Label" parent="Time"]
+[node name="CenterContainer" type="CenterContainer" parent="Time"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -35.0
+offset_bottom = 171.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Time/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_daehc")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Time/CenterContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = -59.0
+offset_right = 114.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 1.0
+fill_mode = 4
+radial_initial_angle = 90.0
+radial_fill_degrees = 180.0
+radial_center_offset = Vector2(0, -50)
+texture_progress = ExtResource("4_ikgsv")
+
+[node name="Timer" type="Label" parent="Time/CenterContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -50.5
-offset_top = 42.0
-offset_right = 50.5
-offset_bottom = 65.0
+offset_left = -220.667
+offset_top = 61.6667
+offset_right = -167.667
+offset_bottom = 97.6667
 grow_horizontal = 2
-text = "Oras Natitira
-"
+theme_override_fonts/font = ExtResource("4_g1h01")
+theme_override_font_sizes/font_size = 32
+text = "99"
 horizontal_alignment = 1
+
+[node name="Points" type="Label" parent="Time/CenterContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 170.0
+offset_top = 60.0
+offset_right = 203.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_g1h01")
+theme_override_font_sizes/font_size = 32
+text = "0"
 
 [node name="GameTimer" type="Timer" parent="Time"]
 wait_time = 180.0
 one_shot = true
 autostart = true
-
-[node name="Points" type="Label" parent="."]
-offset_left = 29.0
-offset_top = 16.0
-offset_right = 110.0
-offset_bottom = 210.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 142
-text = "0"
 
 [node name="WinLose" type="Label" parent="."]
 visible = false
@@ -182,6 +223,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -9.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -294,7 +337,7 @@ text = "Taya!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ia506")
+&"": SubResource("AnimationLibrary_ia506")
 }
 
 [connection signal="timeout" from="Time/GameTimer" to="." method="_on_game_timer_timeout"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca503vpda3ekl"]
+[gd_scene load_steps=5 format=3 uid="uid://ca503vpda3ekl"]
 
-[ext_resource type="Script" path="res://MenuNavigation/EndMenu/MenuScript_EndMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://co1818qor337e" path="res://MenuNavigation/EndMenu/MenuScript_EndMenu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://vobwaqq48dut" path="res://MenuNavigation/StartMenu/lolabg.png" id="2_jfje6"]
+[ext_resource type="FontFile" uid="uid://cfxt824m7bscq" path="res://Assets/Font/animeace_b.ttf" id="3_ny5dt"]
+[ext_resource type="FontFile" uid="uid://cpcl0n6ydgeku" path="res://Assets/Font/animeace.ttf" id="4_gxmaj"]
 
 [node name="EndMenu" type="Control"]
 layout_mode = 3
@@ -27,24 +29,82 @@ texture = ExtResource("2_jfje6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 366.0
-offset_right = -366.0
+offset_left = 34.0
+offset_top = 19.0
+offset_right = -34.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.592157)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.5
+offset_top = -56.0
+offset_right = 345.5
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ny5dt")
+theme_override_font_sizes/font_size = 32
 text = "Salamat sa Paglalaro!"
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Title2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ny5dt")
+theme_override_font_sizes/font_size = 12
+text = "Ang proyekto at laro na ito ay ginagawa para sa CS 199 sa ilalim ng 
+Department of Computer Science ng unibersidad ng pilipinas."
+horizontal_alignment = 1
+
+[node name="Title3" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_ny5dt")
+theme_override_font_sizes/font_size = 12
+text = "
+Maraming salamat sa aming mga adviser,  
+Ma'am Ligaya, at Sir Feria, at pinaka maraming salamat
+'
+kay Ma'am Solamo sa pagtutulong sa amin.
+Maraming salamat rin sa mga nakilahok sa initial interview 
+sa pagpapagawa ng laro na ito.
+
+Pinakamaraming salamat sa inyo sa pakikilahok sa aming thesis project.
+huwag po kalimutan na sagutin ang aming post game survey, at maraming salamat po muli.
+
+BG music ay gawa ni @enricoRamos.
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="Return" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Balik."
+theme_override_fonts/font = ExtResource("4_gxmaj")
+text = "Balik sa Simula"
 
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_Return_pressed"]

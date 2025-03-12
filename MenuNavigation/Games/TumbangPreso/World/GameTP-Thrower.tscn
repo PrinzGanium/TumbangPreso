@@ -8,16 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://crdbr0yms4kos" path="res://MenuNavigation/Games/TumbangPreso/World/decor.tscn" id="7_nkxbw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aeqmb"]
+sky_top_color = Color(0.247378, 0.475015, 1, 1)
+sky_horizon_color = Color(0.461023, 0.674289, 1, 1)
 
 [sub_resource type="Sky" id="Sky_m8j4e"]
 sky_material = SubResource("ProceduralSkyMaterial_aeqmb")
 
-[sub_resource type="Environment" id="Environment_ayhgt"]
+[sub_resource type="Environment" id="Environment_fuvct"]
 background_mode = 2
-background_color = Color(0.663787, 0.684901, 0.0539315, 1)
+background_color = Color(5.10186e-06, 0.675266, 0.28149, 1)
 sky = SubResource("Sky_m8j4e")
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 0.803922, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 2
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.741176, 0.635294, 1)
@@ -46,7 +48,7 @@ active = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66259, 3.74355, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ayhgt")
+environment = SubResource("Environment_fuvct")
 
 [node name="FogVolume" type="FogVolume" parent="WorldEnvironment"]
 size = Vector3(50, 50, 75)

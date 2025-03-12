@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c02xoucyqi5n3"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_pickup.gd" id="1_13p3v"]
+[ext_resource type="Script" uid="uid://bx7x54f7e42v1" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas_pickup.gd" id="1_13p3v"]
 [ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas.glb" id="1_b4r66"]
 
 [sub_resource type="Curve" id="Curve_s6qbn"]
@@ -17,6 +17,7 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 angle_min = 720.0
 angle_max = 720.0
 velocity_pivot = Vector3(0, 5, 0)

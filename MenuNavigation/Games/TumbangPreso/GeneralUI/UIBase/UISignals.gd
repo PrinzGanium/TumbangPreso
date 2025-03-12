@@ -12,10 +12,10 @@ var points = 0
 
 
 func _ready() -> void:
-	#if Settings.mode == Settings.modes.MOBILE:
-		#MControls.show()
-	#else:
-		#MControls.hide()
+	if Settings.mode == Settings.modes.MOBILE:
+		MControls.show()
+	else:
+		MControls.hide()
 	if GlobalSignals.passtime:
 		time = GlobalSignals.timeleft
 		points = GlobalSignals.passScore
@@ -52,7 +52,7 @@ func swapScene() -> void:
 
 func updatePoints():
 	points += 1
-	$Points.text = str(points) + "!"
+	$Time/CenterContainer/TextureRect/Points.text = str(points) + "!"
 	pass
 
 func _on_game_timer_timeout() -> void:

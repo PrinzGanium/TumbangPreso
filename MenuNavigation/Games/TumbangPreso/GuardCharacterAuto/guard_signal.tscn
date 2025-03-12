@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://boxrjrf25krkc"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/World/guard_signaler.gd" id="1_5fwv1"]
+[ext_resource type="Script" uid="uid://d0ajm0u1ajm41" path="res://MenuNavigation/Games/TumbangPreso/World/guard_signaler.gd" id="1_5fwv1"]
 
 [node name="GuardSignal" type="Node"]
 script = ExtResource("1_5fwv1")

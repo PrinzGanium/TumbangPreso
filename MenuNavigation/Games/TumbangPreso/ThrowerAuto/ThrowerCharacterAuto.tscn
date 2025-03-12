@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://bhr8vgahay14c"]
 
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerActionsAuto.gd" id="1_64abk"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/thrower_character_auto.gd" id="1_71i5n"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/Thrower/Thrower_Stats.gd" id="3_8wqgw"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/thrower_state_machine.gd" id="4_ec2ia"]
+[ext_resource type="Script" uid="uid://b2jqt4v3tjtwu" path="res://MenuNavigation/Games/TumbangPreso/Thrower/ThrowerActionsAuto.gd" id="1_64abk"]
+[ext_resource type="Script" uid="uid://cmu6fjp8fhdlq" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/thrower_character_auto.gd" id="1_71i5n"]
+[ext_resource type="Script" uid="uid://cvgeko0j162dl" path="res://MenuNavigation/Games/TumbangPreso/Thrower/Thrower_Stats.gd" id="3_8wqgw"]
+[ext_resource type="Script" uid="uid://ctftevav8cphr" path="res://MenuNavigation/Games/TumbangPreso/ThrowerAuto/thrower_state_machine.gd" id="4_ec2ia"]
 [ext_resource type="PackedScene" uid="uid://b1y2heenk7d8k" path="res://MenuNavigation/Games/TumbangPreso/Thrower/thrower.tscn" id="4_rbsqx"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="5_81d43"]
 [ext_resource type="FontFile" uid="uid://cpcl0n6ydgeku" path="res://Assets/Font/animeace.ttf" id="6_4fq8c"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://dumwyj2c1mmyx"]
+[gd_scene load_steps=18 format=3 uid="uid://dumwyj2c1mmyx"]
 
-[ext_resource type="Script" path="res://MenuNavigation/GameSelectScreen/GameSelect.gd" id="1"]
+[ext_resource type="Script" uid="uid://ihhtj8e2vsfb" path="res://MenuNavigation/GameSelectScreen/GameSelect.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bgmmgsmoos47i" path="res://MenuNavigation/TumbangPresoInstructionsCutscene/TPInstCutscene.tscn" id="2_8qifs"]
 [ext_resource type="Texture2D" uid="uid://vobwaqq48dut" path="res://MenuNavigation/StartMenu/lolabg.png" id="3_p524u"]
 [ext_resource type="Texture2D" uid="uid://bfyn17mca8ild" path="res://MenuNavigation/GameSelectScreen/Papers.png" id="4_u1woj"]
 [ext_resource type="Texture2D" uid="uid://wu8mwwn43mx4" path="res://MenuNavigation/GameSelectScreen/Papers2.png" id="5_xfjyc"]
+[ext_resource type="Texture2D" uid="uid://bkjqf8qrt5pn5" path="res://MenuNavigation/GameSelectScreen/shatong.jpg" id="6_fcdsx"]
 [ext_resource type="Texture2D" uid="uid://bb5txy2ddg5ab" path="res://MenuNavigation/GameSelectScreen/TumbangPreso_total.webp" id="6_jgsrn"]
 [ext_resource type="FontFile" uid="uid://cfxt824m7bscq" path="res://Assets/Font/animeace_b.ttf" id="7_3ntfu"]
 [ext_resource type="FontFile" uid="uid://cpcl0n6ydgeku" path="res://Assets/Font/animeace.ttf" id="8_i2oi0"]
 [ext_resource type="Texture2D" uid="uid://beuw0nebqcsjh" path="res://MenuNavigation/GameSelectScreen/Lola2.png" id="9_kpm0p"]
+[ext_resource type="Texture2D" uid="uid://pln2dfsxyrrq" path="res://MenuNavigation/GameSelectScreen/patintero.jpg" id="10_37rg5"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ij1el"]
 
@@ -24,12 +26,12 @@ region = Rect2(24, 87, 351, 394)
 atlas = ExtResource("4_u1woj")
 region = Rect2(24, 87, 351, 394)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qx4f4"]
-atlas = ExtResource("5_xfjyc")
-region = Rect2(24, 87, 351, 394)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7dex"]
 atlas = ExtResource("4_u1woj")
+region = Rect2(24, 87, 351, 394)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx4f4"]
+atlas = ExtResource("5_xfjyc")
 region = Rect2(24, 87, 351, 394)
 
 [node name="GameSelect" type="Control"]
@@ -56,14 +58,13 @@ texture = ExtResource("3_p524u")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 63.0
 offset_bottom = 86.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_3ntfu")
 theme_override_font_sizes/font_size = 50
@@ -85,61 +86,8 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Button" type="TextureButton" parent="GridContainer"]
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_ij1el")
-texture_normal = SubResource("AtlasTexture_w5lvm")
-texture_pressed = SubResource("AtlasTexture_bc8on")
-texture_hover = SubResource("AtlasTexture_w8pdn")
-texture_disabled = SubResource("AtlasTexture_qx4f4")
-texture_focused = SubResource("AtlasTexture_w7dex")
-
-[node name="TextureRect" type="TextureRect" parent="GridContainer/Button"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = 21.0
-offset_top = 47.0
-offset_right = 320.0
-offset_bottom = 215.0
-texture = ExtResource("6_jgsrn")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="GridContainer/Button"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -94.5
-offset_top = 26.0
-offset_right = 94.5
-offset_bottom = 49.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7_3ntfu")
-text = "Tumbang Preso"
-uppercase = true
-
-[node name="Label2" type="Label" parent="GridContainer/Button"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -142.5
-offset_top = -151.0
-offset_right = 142.5
-offset_bottom = -36.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_i2oi0")
-text = "Ang layunin ay patumbahin ang lata gamit ang tsinelas bago pa man mapatayo ng taya. "
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Button2" type="TextureButton" parent="GridContainer"]
+[node name="Shato" type="TextureButton" parent="GridContainer"]
+self_modulate = Color(0.33, 0.33, 0.33, 1)
 layout_mode = 2
 disabled = true
 toggle_mode = true
@@ -147,20 +95,20 @@ button_group = SubResource("ButtonGroup_ij1el")
 texture_normal = SubResource("AtlasTexture_w5lvm")
 texture_pressed = SubResource("AtlasTexture_bc8on")
 texture_hover = SubResource("AtlasTexture_w8pdn")
-texture_disabled = SubResource("AtlasTexture_qx4f4")
+texture_disabled = SubResource("AtlasTexture_w8pdn")
 texture_focused = SubResource("AtlasTexture_w7dex")
 
-[node name="TextureRect" type="TextureRect" parent="GridContainer/Button2"]
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Shato"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 21.0
-offset_top = 47.0
-offset_right = 320.0
-offset_bottom = 215.0
-texture = ExtResource("6_jgsrn")
+offset_left = 40.0
+offset_top = 51.0
+offset_right = 339.0
+offset_bottom = 219.0
+texture = ExtResource("6_fcdsx")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="GridContainer/Button2"]
+[node name="Label" type="Label" parent="GridContainer/Shato"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -176,7 +124,7 @@ text = "Shato"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="GridContainer/Button2"]
+[node name="Label2" type="Label" parent="GridContainer/Shato"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -195,9 +143,8 @@ text = "Ang laro ay isang kontest ng gaanong kalayo kayang matamaan at maabot an
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Button3" type="TextureButton" parent="GridContainer"]
+[node name="TumbangPreso" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
-disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ij1el")
 texture_normal = SubResource("AtlasTexture_w5lvm")
@@ -206,7 +153,7 @@ texture_hover = SubResource("AtlasTexture_w8pdn")
 texture_disabled = SubResource("AtlasTexture_qx4f4")
 texture_focused = SubResource("AtlasTexture_w7dex")
 
-[node name="TextureRect" type="TextureRect" parent="GridContainer/Button3"]
+[node name="TextureRect" type="TextureRect" parent="GridContainer/TumbangPreso"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 21.0
@@ -216,7 +163,63 @@ offset_bottom = 215.0
 texture = ExtResource("6_jgsrn")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="GridContainer/Button3"]
+[node name="Label" type="Label" parent="GridContainer/TumbangPreso"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.5
+offset_top = 26.0
+offset_right = 94.5
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_3ntfu")
+text = "Tumbang Preso"
+uppercase = true
+
+[node name="Label2" type="Label" parent="GridContainer/TumbangPreso"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -142.5
+offset_top = -151.0
+offset_right = 142.5
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_i2oi0")
+text = "Ang layunin ay patumbahin ang lata gamit ang tsinelas bago pa man mapatayo ng taya. "
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Patintero" type="TextureButton" parent="GridContainer"]
+self_modulate = Color(0.33, 0.33, 0.33, 1)
+layout_mode = 2
+disabled = true
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ij1el")
+texture_normal = SubResource("AtlasTexture_w5lvm")
+texture_pressed = SubResource("AtlasTexture_bc8on")
+texture_hover = SubResource("AtlasTexture_w8pdn")
+texture_disabled = SubResource("AtlasTexture_bc8on")
+texture_focused = SubResource("AtlasTexture_w7dex")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Patintero"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 47.0
+offset_right = 320.0
+offset_bottom = 215.0
+texture = ExtResource("10_37rg5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GridContainer/Patintero"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -232,7 +235,7 @@ text = "Patintero"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="GridContainer/Button3"]
+[node name="Label2" type="Label" parent="GridContainer/Patintero"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -282,6 +285,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="pressed" from="GridContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="GridContainer/Button2" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="GridContainer/Button3" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GridContainer/Shato" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GridContainer/TumbangPreso" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GridContainer/Patintero" to="." method="_on_Button_pressed"]

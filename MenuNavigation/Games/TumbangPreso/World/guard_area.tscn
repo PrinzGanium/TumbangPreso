@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcw44fxmlha6c"]
 
 [ext_resource type="Texture2D" uid="uid://d1gaa3qo7sp1s" path="res://Textures/concrete.png" id="1_6by33"]
-[ext_resource type="Script" path="res://MenuNavigation/Games/TumbangPreso/World/guard_area.gd" id="2_12eqn"]
+[ext_resource type="Script" uid="uid://bvgwoitn3i4f8" path="res://MenuNavigation/Games/TumbangPreso/World/guard_area.gd" id="2_12eqn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjwh1"]
 albedo_color = Color(0.369104, 0.309318, 0.115646, 1)
