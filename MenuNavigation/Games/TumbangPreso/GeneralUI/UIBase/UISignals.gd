@@ -40,8 +40,6 @@ func startTimer():
 
 func LoseGame() -> void:
 	$AnimationPlayer.play("Transfer")
-	$WinLose.text = "NAHULI KITA!"
-	$WinLose.show()
 	pass
 
 func swapScene() -> void:
@@ -50,13 +48,17 @@ func swapScene() -> void:
 	GlobalSignals.passtime = true
 	GlobalSignals.passScore = points
 
+func gameOver() -> void:
+	get_tree().change_scene_to_file("res://MenuNavigation/EndMenu/EndMenu.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	pass
+
 func updatePoints():
 	points += 1
 	$Time/CenterContainer/TextureRect/Points.text = str(points) + "!"
 	pass
 
 func _on_game_timer_timeout() -> void:
-	otherScene = "res://MenuNavigation/EndMenu/EndMenu.tscn"
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	$AnimationPlayer.play("Transfer")
+	$AnimationPlayer.play("GameOver")
+	$GameOverScreen/Panel/VBoxContainer/Points.text = str(points)
 	pass # Replace with function body.

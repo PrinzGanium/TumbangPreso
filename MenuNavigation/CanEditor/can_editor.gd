@@ -7,10 +7,8 @@ func _on_color_picker_color_changed(color: Color) -> void:
 	pass # Replace with function body.
 
 
-@export_dir var gameScene1
-@export_dir var gameScene2
+@export_dir var gameCutscene
 
 func _on_button_pressed() -> void:
-	var c = gameScene1 if randf() <= 0.5 else gameScene2
-	get_tree().change_scene_to_file(c)
+	get_tree().change_scene_to_file(gameCutscene)
 	pass # Replace with function body.

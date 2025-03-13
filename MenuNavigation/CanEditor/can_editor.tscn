@@ -168,8 +168,7 @@ material = SubResource("StandardMaterial3D_34k46")
 
 [node name="CanEditor" type="Node3D"]
 script = ExtResource("1_sbrpf")
-gameScene1 = "uid://c7fdmoomavdsm"
-gameScene2 = "uid://cv7p3ygtm3smi"
+gameCutscene = "uid://bgmmgsmoos47i"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../HoloCan")
