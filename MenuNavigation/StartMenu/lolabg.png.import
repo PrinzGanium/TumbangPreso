@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://vobwaqq48dut"
 path.s3tc="res://.godot/imported/lolabg.png-6774f7e70c60e5184bccc622936d9333.s3tc.ctex"
+path.etc2="res://.godot/imported/lolabg.png-6774f7e70c60e5184bccc622936d9333.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://MenuNavigation/StartMenu/lolabg.png"
-dest_files=["res://.godot/imported/lolabg.png-6774f7e70c60e5184bccc622936d9333.s3tc.ctex"]
+dest_files=["res://.godot/imported/lolabg.png-6774f7e70c60e5184bccc622936d9333.s3tc.ctex", "res://.godot/imported/lolabg.png-6774f7e70c60e5184bccc622936d9333.etc2.ctex"]
 
 [params]
 

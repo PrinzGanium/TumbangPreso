@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b4h711qle4ygc"]
+[gd_scene load_steps=27 format=4 uid="uid://b4h711qle4ygc"]
 
 [ext_resource type="Script" uid="uid://s0mxpo6yyi3l" path="res://MenuNavigation/CanEditor/can_editor.gd" id="1_sbrpf"]
 [ext_resource type="Material" uid="uid://cts6ywa0y618r" path="res://MenuNavigation/CanEditor/CustomColorCan.tres" id="2_34k46"]
@@ -141,6 +141,42 @@ shadow_mesh = SubResource("ArrayMesh_la5wf")
 height = 0.530328
 radius = 0.191638
 
+[sub_resource type="Animation" id="Animation_34k46"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lqev0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjwid"]
+_data = {
+&"Fade": SubResource("Animation_34k46"),
+&"RESET": SubResource("Animation_lqev0")
+}
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aeqmb"]
 
 [sub_resource type="Sky" id="Sky_m8j4e"]
@@ -165,6 +201,9 @@ albedo_texture = ExtResource("2_sbrpf")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lqev0"]
 material = SubResource("StandardMaterial3D_34k46")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqev0"]
+albedo_color = Color(0.419608, 0.176471, 0.192157, 1)
 
 [node name="CanEditor" type="Node3D"]
 script = ExtResource("1_sbrpf")
@@ -257,7 +296,7 @@ offset_right = 25.5
 offset_bottom = -80.5
 grow_horizontal = 2
 grow_vertical = 0
-text = "Tuloy"
+text = "Konpirma!"
 
 [node name="Label" type="Label" parent="Control/Panel"]
 layout_mode = 1
@@ -269,7 +308,25 @@ offset_top = 30.5
 offset_right = 92.0
 offset_bottom = 53.5
 grow_horizontal = 2
-text = "Pumili ng bagong kulay!"
+text = "Pumili ng bagong kulay
+para sa Lata."
+horizontal_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_pjwid")
+}
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
@@ -279,10 +336,18 @@ current = true
 environment = SubResource("Environment_jk6i8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.24847, 0.96864, 0, -0.96864, 0.24847, 0, 3.19194, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_fade_start = 0.795
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(7.93458, 0, 0, 0, -4.37114e-08, -6.027, 0, 1, -2.63449e-07, 0, 0, -2)
 mesh = SubResource("PlaneMesh_lqev0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(2.61082, 0, 0, 0, 1, 0, 0, 0, 2.61082, 0, -0.840443, -0.2381)
+material_override = SubResource("StandardMaterial3D_lqev0")
 
 [connection signal="color_changed" from="Control/Panel/ColorPicker" to="." method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="Control/Panel/Button" to="." method="_on_button_pressed"]

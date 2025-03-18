@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://33ioiqywyxyd"]
+[gd_scene load_steps=13 format=3 uid="uid://33ioiqywyxyd"]
 
 [ext_resource type="Script" uid="uid://c8jpdnki18jwu" path="res://MenuNavigation/Games/TumbangPreso/player.gd" id="1_xfri8"]
 [ext_resource type="PackedScene" uid="uid://b1y2heenk7d8k" path="res://MenuNavigation/Games/TumbangPreso/Thrower/thrower.tscn" id="2_j1obb"]
@@ -6,7 +6,10 @@
 [ext_resource type="Script" uid="uid://cvgeko0j162dl" path="res://MenuNavigation/Games/TumbangPreso/Thrower/Thrower_Stats.gd" id="2_xxv7p"]
 [ext_resource type="PackedScene" uid="uid://bue4vnmx5bg3m" path="res://MenuNavigation/Games/TumbangPreso/TsinelasAmmo/tsinelas.glb" id="3_1ou83"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="4_hurmf"]
+[ext_resource type="Script" uid="uid://b31wua3llfdyr" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardHud.gd" id="4_jpqa0"]
+[ext_resource type="Script" uid="uid://crcr28nmrsgpf" path="res://MenuNavigation/Games/TumbangPreso/Thrower/selfrelease.gd" id="5_bgybm"]
 [ext_resource type="FontFile" uid="uid://cpcl0n6ydgeku" path="res://Assets/Font/animeace.ttf" id="6_kr6eg"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="7_4mrmw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0m0o8"]
 
@@ -41,14 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00515032, -0.566553)
 cull_mask = 1048573
 
-[node name="Thrower" parent="Head/Camera3D" instance=ExtResource("2_j1obb")]
-transform = Transform3D(0.981225, 0, 0.192864, 0.0342428, 0.984112, -0.174215, -0.1898, 0.177548, 0.965636, 0.882964, -0.687548, -0.81226)
-
-[node name="RayCast3D" parent="Head/Camera3D/Thrower" index="0"]
-transform = Transform3D(0.990868, -0.0053997, -0.134725, 0.0132812, 0.998247, 0.0576707, 0.134177, -0.0589332, 0.989203, 0, 0, 0)
-target_position = Vector3(0, 0, -100)
-
-[node name="HUD" type="Control" parent="Head/Camera3D/Thrower"]
+[node name="HUD" type="Control" parent="Head/Camera3D"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,8 +52,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("4_jpqa0")
 
-[node name="ChargeBar" type="ProgressBar" parent="Head/Camera3D/Thrower/HUD"]
+[node name="Controls" type="Control" parent="Head/Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action Button" type="Button" parent="Head/Camera3D/HUD/Controls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -438.0
+offset_right = -15.0
+offset_bottom = -251.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+text = "TAPON"
+script = ExtResource("5_bgybm")
+
+[node name="Move" parent="Head/Camera3D/HUD/Controls" instance=ExtResource("7_4mrmw")]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+offset_left = 16.0
+offset_top = -266.0
+offset_right = 266.0
+offset_bottom = -16.0
+joystick_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Look" parent="Head/Camera3D/HUD/Controls" instance=ExtResource("7_4mrmw")]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -266.0
+offset_top = -266.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+joystick_mode = 1
+use_input_actions = false
+
+[node name="ChargeBar" type="ProgressBar" parent="Head/Camera3D/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -71,7 +124,7 @@ offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="crosshair" type="TextureRect" parent="Head/Camera3D/Thrower/HUD"]
+[node name="crosshair" type="TextureRect" parent="Head/Camera3D/HUD"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,17 +140,18 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_hurmf")
 
-[node name="TsinelasLabel" type="Label" parent="Head/Camera3D/Thrower/HUD"]
+[node name="TsinelasLabel" type="Label" parent="Head/Camera3D/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -242.0
-offset_top = -260.0
-offset_right = -100.0
-offset_bottom = -215.0
+offset_left = -155.0
+offset_top = -419.0
+offset_right = -13.0
+offset_bottom = -374.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -106,7 +160,8 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Tsinelas: "
 
-[node name="WarningLabel" type="Label" parent="Head/Camera3D/Thrower/HUD"]
+[node name="WarningLabel" type="Label" parent="Head/Camera3D/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -123,7 +178,19 @@ rotation = 0.182014
 theme_override_fonts/font = ExtResource("6_kr6eg")
 text = "Maari kang hulihin! Takbo!"
 
+[node name="Thrower" parent="Head/Camera3D" instance=ExtResource("2_j1obb")]
+transform = Transform3D(0.981225, 0, 0.192864, 0.0342428, 0.984112, -0.174215, -0.1898, 0.177548, 0.965636, 0.882964, -0.687548, -0.81226)
+
+[node name="RayCast3D" parent="Head/Camera3D/Thrower" index="0"]
+transform = Transform3D(0.990868, -0.0053997, -0.134725, 0.0132812, 0.998247, 0.0576707, 0.134177, -0.0589332, 0.989203, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+
 [node name="tsinelas" parent="Head/Camera3D" instance=ExtResource("3_1ou83")]
 transform = Transform3D(0.247424, 0.0603174, -0.0129706, -0.0284145, 0.0638199, -0.245244, -0.0547636, 0.239403, 0.0686449, 1.18, -0.57, -1.046)
+
+[node name="tsinelas2" parent="Head/Camera3D" instance=ExtResource("3_1ou83")]
+transform = Transform3D(0.247424, 0.0603174, -0.0129706, -0.0284145, 0.0638199, -0.245244, -0.0547636, 0.239403, 0.0686449, -1.18956, -0.57, -1.046)
+
+[connection signal="pressed" from="Head/Camera3D/HUD/Controls/Action Button" to="Actions" method="_on_action_button_pressed"]
 
 [editable path="Head/Camera3D/Thrower"]

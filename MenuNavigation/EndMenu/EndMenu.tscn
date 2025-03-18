@@ -26,8 +26,8 @@ offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_jfje6")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 2
+stretch_mode = 6
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,7 +40,7 @@ offset_right = -34.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.592157)
+color = Color(0.0595786, 0.0594632, 0.0183877, 0.592157)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -88,10 +88,13 @@ kay Ma'am Solamo sa pagtutulong sa amin.
 Maraming salamat rin sa mga nakilahok sa initial interview 
 sa pagpapagawa ng laro na ito.
 
-Pinakamaraming salamat sa inyo sa pakikilahok sa aming thesis project.
-huwag po kalimutan na sagutin ang aming post game survey, at maraming salamat po muli.
+Pinakamaraming salamat sa inyo sa pakikilahok 
+sa aming thesis project. huwag po kalimutan na sagutin ang aming post game survey, at maraming salamat po muli.
 
 BG music ay gawa ni @enricoRamos.
+Virtual Joystick asset by Marco Fazio
+
+
 "
 horizontal_alignment = 1
 autowrap_mode = 2

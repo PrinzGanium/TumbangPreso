@@ -68,8 +68,8 @@ offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_p524u")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 2
+stretch_mode = 6
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1

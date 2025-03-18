@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl3u1dlo3r0qn"
 path.s3tc="res://.godot/imported/Building_wall-texture-with-white-spots.jpg-af366ffa6be76b4808d8eaecd5b80abf.s3tc.ctex"
+path.etc2="res://.godot/imported/Building_wall-texture-with-white-spots.jpg-af366ffa6be76b4808d8eaecd5b80abf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://MenuNavigation/Games/TumbangPreso/World/Building_wall-texture-with-white-spots.jpg"
-dest_files=["res://.godot/imported/Building_wall-texture-with-white-spots.jpg-af366ffa6be76b4808d8eaecd5b80abf.s3tc.ctex"]
+dest_files=["res://.godot/imported/Building_wall-texture-with-white-spots.jpg-af366ffa6be76b4808d8eaecd5b80abf.s3tc.ctex", "res://.godot/imported/Building_wall-texture-with-white-spots.jpg-af366ffa6be76b4808d8eaecd5b80abf.etc2.ctex"]
 
 [params]
 

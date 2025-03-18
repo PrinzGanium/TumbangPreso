@@ -44,3 +44,7 @@ func _process(_delta: float) -> void:
 				if s:
 					print("caught")
 					GlobalSignals.emit_signal("playerCaught")
+
+
+func _on_action_button_pressed() -> void:
+	pass # Replace with function body.

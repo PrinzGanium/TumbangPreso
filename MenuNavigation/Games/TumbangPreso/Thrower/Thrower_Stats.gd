@@ -7,11 +7,11 @@ signal ammochange
 		ammochange.emit()
 	get:
 		return ammo
-@onready var ammotext = $"../Head/Camera3D/Thrower/HUD/TsinelasLabel"
+@onready var ammotext = $"../Head/Camera3D/HUD/TsinelasLabel"
 
 @export var canTag = false
-@onready var tagLabel = $"../Head/Camera3D/Thrower/HUD/WarningLabel"
-
+@onready var tagLabel = $"../Head/Camera3D/HUD/WarningLabel"
+	
 func _process(_delta: float) -> void:
 	ammotext.text = "Tsinelas:" + str(ammo)
 

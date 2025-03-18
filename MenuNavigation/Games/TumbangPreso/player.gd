@@ -24,21 +24,31 @@ const FOV_CHANGE = 1.5
 
 var Capture = true
 
+@onready var headjoystick = $Head/Camera3D/HUD/Controls/Look
+var joystickoutput: Vector2
+var joystickFactor = 12
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 	
 	GlobalSignals.canDown.connect(cantCatch)
 	GlobalSignals.canReturn.connect(canCatch)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Settings.mode == Settings.modes.COMP:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
-
 func _physics_process(delta: float) -> void:
+
+	if Settings.mode == Settings.modes.MOBILE:
+		joystickoutput = headjoystick.output
+		head.rotate_y(-joystickoutput.x * joystickFactor * SENSITIVITY)
+		camera.rotate_x(-joystickoutput.y * joystickFactor * SENSITIVITY)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

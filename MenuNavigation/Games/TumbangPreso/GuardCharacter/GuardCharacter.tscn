@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://cdwynh7cks5xx"]
+[gd_scene load_steps=18 format=4 uid="uid://cdwynh7cks5xx"]
 
 [ext_resource type="Script" uid="uid://c8jpdnki18jwu" path="res://MenuNavigation/Games/TumbangPreso/player.gd" id="1_7s7db"]
 [ext_resource type="Script" uid="uid://bekk1nhlplt0n" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardActions.gd" id="2_w3rf8"]
 [ext_resource type="Script" uid="uid://bishblliin3wi" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/Guard_Stats.gd" id="3_c2au4"]
 [ext_resource type="Script" uid="uid://cstb4wspf3flr" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/interact_ray.gd" id="4_g7387"]
 [ext_resource type="Texture2D" uid="uid://4s1vxex6q5s2" path="res://Crosshair.png" id="4_xp8gi"]
+[ext_resource type="Script" uid="uid://b31wua3llfdyr" path="res://MenuNavigation/Games/TumbangPreso/GuardCharacter/GuardHud.gd" id="5_ubig4"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_jg1xl"]
+[ext_resource type="Material" uid="uid://cts6ywa0y618r" path="res://MenuNavigation/CanEditor/CustomColorCan.tres" id="8_kg1yv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0m0o8"]
 
@@ -147,18 +150,13 @@ horizontal_alignment = 1
 
 [node name="HUD" type="Control" parent="Head/Camera3D"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("5_ubig4")
 
 [node name="TextureRect" type="TextureRect" parent="Head/Camera3D/HUD"]
 layout_mode = 1
@@ -176,6 +174,61 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_xp8gi")
 
+[node name="Controls" type="Control" parent="Head/Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Action Button" type="Button" parent="Head/Camera3D/HUD/Controls"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -351.0
+offset_right = -15.0
+offset_bottom = -251.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+text = "TAPON"
+
+[node name="Move" parent="Head/Camera3D/HUD/Controls" instance=ExtResource("6_jg1xl")]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+offset_left = 16.0
+offset_top = -266.0
+offset_right = 266.0
+offset_bottom = -16.0
+joystick_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Look" parent="Head/Camera3D/HUD/Controls" instance=ExtResource("6_jg1xl")]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -266.0
+offset_top = -266.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+joystick_mode = 1
+use_input_actions = false
+
 [node name="Can" type="StaticBody3D" parent="Head/Camera3D"]
 transform = Transform3D(0.252377, -0.162191, 0, 0.162191, 0.252377, 0, 0, 0, 0.3, 0.537869, -0.307191, -0.555664)
 visible = false
@@ -189,9 +242,12 @@ skeleton = NodePath("")
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="Head/Camera3D/Can"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("8_kg1yv")
 mesh = SubResource("ArrayMesh_hblbu")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Can"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("CylinderShape3D_tbipf")
+
+[connection signal="pressed" from="Head/Camera3D/HUD/Controls/Action Button" to="Head/Camera3D/InteractRay" method="_on_action_button_pressed"]

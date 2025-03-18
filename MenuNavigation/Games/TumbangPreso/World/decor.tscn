@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crdbr0yms4kos"]
+[gd_scene load_steps=8 format=3 uid="uid://crdbr0yms4kos"]
 
 [ext_resource type="PackedScene" uid="uid://blx5jve57pfde" path="res://MenuNavigation/Games/TumbangPreso/World/Pole.glb" id="1_psf0q"]
 [ext_resource type="PackedScene" uid="uid://cboyp2s54gqn0" path="res://MenuNavigation/Games/TumbangPreso/World/Banderas.glb" id="2_6sukg"]
@@ -10,6 +10,9 @@ albedo_color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvvbd"]
 albedo_color = Color(0.051971, 0.051971, 0.051971, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rr5q"]
+albedo_color = Color(0, 0.338419, 9.62615e-08, 1)
 
 [node name="Decor" type="Node3D"]
 
@@ -365,3 +368,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8443, 0, 57.8799)
 
 [node name="tree10" parent="Foilage" instance=ExtResource("4_j35l4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.997, 0, -83.4291)
+
+[node name="GreenHills" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94, 0, 0)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 51.4
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.3655, 0, -95.5633)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 51.4
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.5396, 0, 83.3312)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 51.4
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.5323, 0, 74.9216)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 51.4
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51047, 0, 349.856)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 51.4
+
+[node name="CSGSphere3D10" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7814, 0, -339.338)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 51.4
+
+[node name="CSGSphere3D8" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.6574, 0, 325.706)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 71.0
+
+[node name="CSGSphere3D9" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.8134, 0, -374.633)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 71.0
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.877, 0, -107.795)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 75.0
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="GreenHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.475, 0, -11.4676)
+material_override = SubResource("StandardMaterial3D_6rr5q")
+radius = 75.0

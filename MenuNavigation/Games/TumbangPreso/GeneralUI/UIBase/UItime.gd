@@ -12,4 +12,3 @@ func start(time):
 func _process(_delta: float) -> void:
 	timertext.text = str(round(timer.time_left))
 	progressbar.value = ((total - timer.time_left)/total) * 100
-	print(progressbar.value)
